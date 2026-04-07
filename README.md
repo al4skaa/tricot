@@ -1,17 +1,23 @@
-# 🧶 Tricot · Répartition
-
-Application web pour tricoter sans se perdre — compteur de rangs et répartition des augmentations & diminutions.
+# 🧶 Assistant tricot
+Une application web pour tricoter sans s'y perdre : compteur de rangs et répartition des augmentations & diminutions.
 
 ## Fonctionnalités
 
-- **Compteur de rangs** — incrémente et sauvegarde automatiquement
-- **Répartition automatique** — calcule la distribution optimale des augmentations ou diminutions sur un rang
-- **Étapes cliquables** — chaque étape se barre au clic pour suivre l'avancement
-- **Progression visuelle** — barre de progression en temps réel
-- **Sauvegarde locale** — toutes les données sont mémorisées entre les sessions
+- **Compteur de rangs** : incrémente et sauvegarde automatiquement !
+- **Répartition automatique** : calcule la distribution optimale des augmentations ou diminutions sur un rang
+- **Étapes cliquables** : chaque étape se barre au clic pour suivre l'avancement
+- **Progression visuelle** : barre de progression en temps réel
+- **Sauvegarde locale** : toutes les données sont mémorisées entre les sessions et fonctionne hors ligne
 
 ## Utilisation
 
+### Compteur de rangs 
+1. Bouton **+** pour passer au rang suivant
+2. Bouton **−** pour revenir en arrière
+3. **Réinitialiser** pour tout remettre à zéro
+4. Points colorés qui s'allument (max 20 + compteur)
+
+### Répartition
 1. Entrer le nombre de mailles de départ
 2. Entrer le nombre d'augmentations ou diminutions souhaitées
 3. Choisir le type (augmentation / diminution)
@@ -24,4 +30,4 @@ Application web pour tricoter sans se perdre — compteur de rangs et répartiti
 
 ---
 
-Créé par [@alaskaa.tricot](https://www.instagram.com/alaskaa.tricot) 🧶
+Créé par [@alaskaa.tricot](https://www.instagram.com/alaskaa.tricot)
