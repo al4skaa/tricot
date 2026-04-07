@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+  <meta name="theme-color" content="#0F0F13">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Tricot">
+  <link rel="manifest" href="data:application/json,{
+    &quot;name&quot;: &quot;Tricot&quot;,
+    &quot;short_name&quot;: &quot;Tricot&quot;,
+    &quot;start_url&quot;: &quot;.&quot;,
+    &quot;display&quot;: &quot;standalone&quot;,
+    &quot;background_color&quot;: &quot;#0F0F13&quot;,
+    &quot;theme_color&quot;: &quot;#8B5CF6&quot;,
+    &quot;icons&quot;: [{
+      &quot;src&quot;: &quot;data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧶</text></svg>&quot;,
+      &quot;sizes&quot;: &quot;any&quot;,
+      &quot;type&quot;: &quot;image/svg+xml&quot;
+    }]
+  }">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tricot</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+  :root {
+    --accent: #8B5CF6;
+    --accent-2: #EC4899;
+    --bg: #0F0F13;
+    --surface: #18181F;
+    --surface-2: #212130;
+    --border: rgba(255,255,255,0.07);
+    --text: #F1F0F5;
+    --muted: #7B7A8E;
+    --done: #3D3C4E;
+    --green: #34D399;
+    --green-light: #D1FAE5;
+    --radius: 16px;
+    --cat-pink: #FDE8F5;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 20px 16px 60px;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  header { padding: 36px 0 28px; text-align: center; }
+  .logo {
+    width: 56px; height: 56px;
+    background: #FDE8F5;
+    border-radius: 18px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem;
+    margin: 0 auto 16px;
+    box-shadow: 0 8px 32px rgba(255,255,255,0.12);
+  }
+  header h1 {
+    font-size: 1.6rem; font-weight: 800; letter-spacing: -0.6px;
+    background: linear-gradient(135deg, #E0D7FF 0%, #F9A8D4 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  header p { color: var(--muted); font-size: 0.88rem; margin-top: 6px; }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px;
+    margin-bottom: 12px;
+  }
+  .section-label {
+    font-size: 0.7rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--muted); margin-bottom: 14px;
+  }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group label { font-size: 0.78rem; font-weight: 500; color: var(--muted); }
+  input[type=number] {
+    padding: 13px 14px;
+    background: var(--surface-2); border: 1px solid var(--border);
+    border-radius: 11px; color: var(--text);
+    font-size: 1.05rem; font-weight: 500; font-family: inherit;
+    outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+    -moz-appearance: textfield; width: 100%;
+  }
+  input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; }
+  input[type=number]:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(139,92,246,0.18); }
+  input[type=number]::placeholder { color: var(--done); }
+
+  .toggle-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 16px; }
+  .toggle-btn {
+    padding: 11px 10px; border: 1px solid var(--border); border-radius: 11px;
+    background: var(--surface-2); color: var(--muted); font-family: inherit;
+    font-size: 0.88rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+  }
+  .toggle-btn:hover { border-color: rgba(255,255,255,0.15); color: var(--text); }
+  .toggle-btn.active-augm { background: linear-gradient(135deg,rgba(139,92,246,0.2),rgba(168,85,247,0.1)); border-color: var(--accent); color: #C4B5FD; }
+  .toggle-btn.active-dim  { background: linear-gradient(135deg,rgba(236,72,153,0.2),rgba(244,114,182,0.1)); border-color: var(--accent-2); color: #F9A8D4; }
+
+  .btn-cta {
+    width: 100%; padding: 14px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: white; border: none; border-radius: 12px;
+    font-family: inherit; font-size: 0.95rem; font-weight: 700;
+    cursor: pointer; transition: opacity 0.2s, transform 0.15s;
+    box-shadow: 0 4px 20px rgba(139,92,246,0.3);
+  }
+  .btn-cta:hover { opacity: 0.88; }
+  .btn-cta:active { transform: scale(0.98); }
+
+  /* Rang counter */
+  .rang-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px;
+    margin-bottom: 12px;
+  }
+  .rang-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 18px;
+  }
+  .rang-title {
+    font-size: 0.7rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.1em; color: #8B5CF6;
+  }
+  .rang-reset-btn {
+    font-size: 0.72rem; font-weight: 600; color: #C084A8;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 8px; padding: 5px 11px;
+    cursor: pointer; font-family: inherit; transition: all 0.2s;
+  }
+  .rang-reset-btn:hover { background: rgba(255,255,255,0.3); }
+
+  /* Cat head */
+  .cat-wrap {
+    position: relative;
+    width: 130px;
+    margin: 0 auto 20px;
+  }
+  .cat-ear {
+    position: absolute;
+    width: 0; height: 0;
+    top: -2px;
+    z-index: 0;
+  }
+  .cat-ear-l {
+    left: 14px;
+    border-left: 19px solid transparent;
+    border-right: 19px solid transparent;
+    border-bottom: 32px solid #FBDFF0;
+    filter: drop-shadow(0 -2px 6px rgba(236,72,153,0.2));
+  }
+  .cat-ear-r {
+    right: 14px;
+    border-left: 19px solid transparent;
+    border-right: 19px solid transparent;
+    border-bottom: 32px solid #FBDFF0;
+    filter: drop-shadow(0 -2px 6px rgba(236,72,153,0.2));
+  }
+  .cat-head-circle {
+    position: relative; z-index: 1;
+    background: var(--cat-pink);
+    border-radius: 50%;
+    width: 130px; height: 130px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    box-shadow: 0 6px 28px rgba(236,72,153,0.18);
+    padding-top: 10px;
+  }
+  .rang-number {
+    font-size: 2.8rem; font-weight: 800;
+    letter-spacing: -2px; line-height: 1;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    transition: transform 0.15s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  .rang-number.bump { transform: scale(1.25); }
+  .rang-sub {
+    font-size: 0.62rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.12em; color: #C084A8; margin-top: 2px;
+  }
+  .cat-eyes {
+    display: flex; gap: 14px; margin-top: 5px;
+  }
+  .cat-eye {
+    width: 7px; height: 7px;
+    background: var(--accent);
+    border-radius: 50%;
+    opacity: 0.7;
+  }
+
+  .rang-controls {
+    display: flex; align-items: center; justify-content: center; gap: 14px;
+  }
+  .rang-btn {
+    width: 52px; height: 52px;
+    border-radius: 50%; border: none;
+    font-size: 1.5rem; font-weight: 300; line-height: 1;
+    cursor: pointer; font-family: inherit;
+    transition: transform 0.15s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .rang-btn-minus {
+    background: rgba(255,255,255,0.2);
+    color: #C084A8;
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+  .rang-btn-minus:hover { color: var(--accent-2); border-color: var(--accent-2); }
+  .rang-btn-plus {
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: white;
+    box-shadow: 0 4px 18px rgba(139,92,246,0.35);
+    font-size: 1.8rem;
+  }
+  .rang-btn-plus:hover { box-shadow: 0 6px 24px rgba(139,92,246,0.5); }
+  .rang-btn:active { transform: scale(0.9); }
+
+  .rang-dots {
+    display: flex; gap: 5px; justify-content: center;
+    margin-top: 14px; flex-wrap: wrap; max-width: 260px; margin-left: auto; margin-right: auto;
+  }
+  .rang-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: rgba(139,92,246,0.3); border: 1px solid rgba(139,92,246,0.5);
+    transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  .rang-dot.filled {
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    border-color: transparent;
+    box-shadow: 0 0 6px rgba(139,92,246,0.5);
+  }
+
+  /* Emoji badges */
+  .emoji-badge {
+    display: inline-flex; align-items: center; justify-content: center;
+    background: #FDE8F5;
+    border: 1px solid #FBDFF0;
+    color: #9D4777;
+    border-radius: 8px;
+    padding: 3px 8px;
+    font-size: 1em;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-right: 6px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.10);
+  }
+
+  /* Stats */
+  .stats-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-bottom: 14px; }
+  .stat-chip { background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px; padding: 12px 10px; text-align: center; }
+  .stat-val { font-size: 1.55rem; font-weight: 800; color: var(--text); letter-spacing: -1px; }
+  .stat-lbl { font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); margin-top: 2px; }
+
+  .formula-block { background: var(--surface-2); border: 1px solid var(--border); border-radius: 11px; padding: 12px 14px; margin-bottom: 8px; }
+  .formula-block .flabel { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 5px; }
+  .formula-block.pink .flabel { color: var(--accent-2); }
+  .formula-block .fval { font-size: 0.88rem; color: var(--text); line-height: 1.6; }
+
+  .progress-wrap { margin-bottom: 16px; }
+  .progress-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .progress-meta span { font-size: 0.8rem; font-weight: 600; color: var(--muted); }
+  .bar-bg { height: 5px; background: var(--surface-2); border-radius: 10px; overflow: hidden; }
+  .bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    border-radius: 10px;
+    transition: width 0.45s cubic-bezier(0.34,1.56,0.64,1);
+  }
+
+  .steps-list { display: flex; flex-direction: column; gap: 6px; }
+  .step {
+    display: grid; grid-template-columns: 36px 1fr auto;
+    align-items: center; gap: 12px;
+    padding: 13px 14px;
+    background: var(--surface-2); border: 1px solid var(--border);
+    border-radius: 12px; cursor: pointer;
+    transition: border-color 0.2s, background 0.2s, opacity 0.2s;
+    user-select: none; -webkit-tap-highlight-color: transparent;
+  }
+  .step:hover { border-color: rgba(139,92,246,0.4); }
+  .step.active-next { border-color: var(--accent); background: rgba(139,92,246,0.08); box-shadow: 0 0 0 1px rgba(139,92,246,0.25); }
+  .step.done { opacity: 0.38; border-color: var(--border); background: var(--surface-2); }
+  .step-badge {
+    width: 34px; height: 34px; border-radius: 10px;
+    background: rgba(139,92,246,0.15); border: 1px solid rgba(139,92,246,0.25);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.72rem; font-weight: 800; color: #C4B5FD;
+    transition: all 0.2s; flex-shrink: 0;
+  }
+  .step.done .step-badge { background: var(--surface); border-color: var(--border); color: var(--done); }
+  .step.active-next .step-badge { background: var(--accent); border-color: var(--accent); color: white; box-shadow: 0 2px 10px rgba(139,92,246,0.4); }
+  .step-body { min-width: 0; }
+  .step-main { font-size: 0.95rem; font-weight: 600; color: var(--text); transition: all 0.2s; }
+  .step.done .step-main { text-decoration: line-through; color: var(--done); }
+  .step-hint { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
+  .step.done .step-hint { color: var(--done); }
+  .step-icon { font-size: 1rem; opacity: 0; transition: opacity 0.2s; flex-shrink: 0; }
+  .step.done .step-icon { opacity: 1; }
+
+  .complete-card {
+    background: linear-gradient(135deg, rgba(52,211,153,0.12), rgba(16,185,129,0.06));
+    border: 1px solid rgba(52,211,153,0.25);
+    border-radius: 14px; padding: 20px; text-align: center; margin-top: 12px;
+  }
+  .complete-card .big { font-size: 2.2rem; }
+  .complete-card p { font-size: 1rem; font-weight: 700; color: var(--green); margin-top: 6px; }
+  .complete-card small { font-size: 0.8rem; color: var(--muted); display: block; margin-top: 3px; }
+
+  .btn-reset {
+    width: 100%; padding: 12px; margin-top: 10px;
+    background: transparent; border: 1px solid var(--border);
+    border-radius: 11px; color: var(--muted); font-family: inherit;
+    font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
+  }
+  .btn-reset:hover { border-color: var(--accent-2); color: #F9A8D4; }
+
+  .hidden { display: none !important; }
+
+  @keyframes fadeUp { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }
+  #results { animation: fadeUp 0.35s ease both; }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-thumb { background: var(--surface-2); border-radius: 4px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">💘</div>
+  <h1>Tricot</h1>
+  <p>Compteur de rangs &amp; répartition des mailles</p>
+</header>
+
+<!-- Compteur de rangs -->
+<div class="rang-card">
+  <div class="rang-header">
+    <div class="rang-title"><span class="emoji-badge">🪡 Compteur de rangs</span></div>
+    <button class="rang-reset-btn" onclick="resetRang()">Réinitialiser</button>
+  </div>
+  <div class="cat-wrap">
+    <div class="cat-ear cat-ear-l"></div>
+    <div class="cat-ear cat-ear-r"></div>
+    <div class="cat-head-circle">
+      <div class="rang-number" id="rang-num">0</div>
+      <div class="rang-sub">rang</div>
+      <div class="cat-eyes">
+        <div class="cat-eye"></div>
+        <div class="cat-eye"></div>
+      </div>
+    </div>
+  </div>
+  <div class="rang-controls">
+    <button class="rang-btn rang-btn-minus" onclick="changeRang(-1)">−</button>
+    <button class="rang-btn rang-btn-plus" onclick="changeRang(1)">+</button>
+  </div>
+  <div class="rang-dots" id="rang-dots"></div>
+</div>
+
+<!-- Répartition -->
+<div class="card">
+  <div class="section-label"><span class="emoji-badge">🧮 Répartition Augm. &amp; Dim.</span></div>
+  <div class="form-row">
+    <div class="form-group">
+      <label>Mailles de départ</label>
+      <input type="number" id="stitches" placeholder="ex. 45" min="1" inputmode="numeric">
+    </div>
+    <div class="form-group">
+      <label>Nbre de modifications</label>
+      <input type="number" id="increases" placeholder="ex. 15" min="1" inputmode="numeric">
+    </div>
+  </div>
+  <div class="toggle-row">
+    <button class="toggle-btn active-augm" id="btn-augm" onclick="setType('augm.',this,'augm')">⬆ Augmentation</button>
+    <button class="toggle-btn" id="btn-dim" onclick="setType('dim.',this,'dim')">⬇ Diminution</button>
+  </div>
+  <button class="btn-cta" onclick="calculate()">Calculer la répartition</button>
+</div>
+
+<!-- Résultats -->
+<div id="results" class="hidden">
+  <div class="card">
+    <div class="section-label"><span class="emoji-badge">📊</span> Résumé du rang</div>
+    <div class="stats-row">
+      <div class="stat-chip"><div class="stat-val" id="info-n">—</div><div class="stat-lbl">Mailles</div></div>
+      <div class="stat-chip"><div class="stat-val" id="info-k">—</div><div class="stat-lbl" id="info-k-lbl">Augm.</div></div>
+      <div class="stat-chip"><div class="stat-val" id="info-f">—</div><div class="stat-lbl">Après rang</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="flabel">Formule compacte</div>
+      <div class="fval" id="compact"></div>
+    </div>
+    <div class="formula-block pink">
+      <div class="flabel">Séquence complète</div>
+      <div class="fval" id="sequence"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="section-label"><span class="emoji-badge">✅</span> Étapes — appuyez pour cocher</div>
+    <div class="progress-wrap">
+      <div class="progress-meta">
+        <span>Progression</span>
+        <span><strong id="prog-done">0</strong> / <strong id="prog-total">0</strong></span>
+      </div>
+      <div class="bar-bg"><div class="bar-fill" id="bar" style="width:0%"></div></div>
+    </div>
+    <div class="steps-list" id="steps-list"></div>
+    <div id="complete-msg" class="complete-card hidden">
+      <div class="big">🎉</div>
+      <p>Rang terminé !</p>
+      <small>Toutes les étapes sont cochées</small>
+    </div>
+    <button class="btn-reset" onclick="resetSteps()">↺ Recommencer le rang</button>
+  </div>
+</div>
+
+<script>
+  let selectedType = 'augm.', selectedClass = 'augm';
+  let totalSteps = 0, doneSteps = 0;
+  let rangCount = 0;
+  let lastSteps = [], lastType = 'augm.';
+  const MAX_DOTS = 20;
+  const STORE = 'tricot_v1';
+
+  // ── Persistance ──
+  function save() {
+    const checkedIndexes = [...document.querySelectorAll('.step.done')].map(e => parseInt(e.dataset.i));
+    const data = {
+      rangCount,
+      stitches: document.getElementById('stitches').value,
+      increases: document.getElementById('increases').value,
+      type: selectedType,
+      steps: lastSteps,
+      checked: checkedIndexes
+    };
+    localStorage.setItem(STORE, JSON.stringify(data));
+  }
+
+  function load() {
+    try {
+      const raw = localStorage.getItem(STORE);
+      if (!raw) return;
+      const data = JSON.parse(raw);
+
+      // Restore rang
+      if (data.rangCount !== undefined) { rangCount = data.rangCount; updateRangDisplay(false); }
+
+      // Restore inputs
+      if (data.stitches) document.getElementById('stitches').value = data.stitches;
+      if (data.increases) document.getElementById('increases').value = data.increases;
+      if (data.type) {
+        selectedType = data.type; selectedClass = data.type === 'augm.' ? 'augm' : 'dim';
+        document.querySelectorAll('.toggle-btn').forEach(b => b.className = 'toggle-btn');
+        const btn = data.type === 'augm.' ? document.getElementById('btn-augm') : document.getElementById('btn-dim');
+        btn.classList.add('active-' + selectedClass);
+      }
+
+      // Restore steps + checked state
+      if (data.steps && data.steps.length > 0) {
+        lastSteps = data.steps; lastType = data.type || 'augm.';
+        renderResults(data.steps, data.type || 'augm.',
+          parseInt(data.stitches) || 0,
+          parseInt(data.increases) || 0,
+          data.checked || []);
+      }
+    } catch(e) { console.warn('Erreur de chargement:', e); }
+  }
+
+  // ── Compteur rangs ──
+  function changeRang(delta) {
+    rangCount = Math.max(0, rangCount + delta);
+    updateRangDisplay(delta > 0);
+    save();
+  }
+  function resetRang() {
+    rangCount = 0;
+    updateRangDisplay(false);
+    save();
+  }
+  function updateRangDisplay(bump) {
+    const el = document.getElementById('rang-num');
+    el.textContent = rangCount;
+    if (bump) { el.classList.add('bump'); setTimeout(() => el.classList.remove('bump'), 200); }
+    renderDots();
+    const sub = document.querySelector('.rang-sub');
+    sub.textContent = rangCount === 1 ? 'rang' : 'rangs';
+  }
+  function renderDots() {
+    const container = document.getElementById('rang-dots');
+    container.innerHTML = '';
+    const shown = Math.min(rangCount, MAX_DOTS);
+    for (let i = 0; i < shown; i++) {
+      const d = document.createElement('div');
+      d.className = 'rang-dot filled';
+      container.appendChild(d);
+    }
+    if (rangCount > MAX_DOTS) {
+      const more = document.createElement('span');
+      more.style.cssText = 'font-size:0.7rem;color:#C084A8;align-self:center;margin-left:2px;';
+      more.textContent = '+' + (rangCount - MAX_DOTS);
+      container.appendChild(more);
+    }
+  }
+
+  // ── Calcul ──
+  function setType(type, btn, cls) {
+    selectedType = type; selectedClass = cls;
+    document.querySelectorAll('.toggle-btn').forEach(b => b.className = 'toggle-btn');
+    btn.classList.add('active-' + cls);
+    save();
+  }
+
+  function calculate() {
+    const N = parseInt(document.getElementById('stitches').value);
+    const K = parseInt(document.getElementById('increases').value);
+    if (!N || !K || isNaN(N) || isNaN(K) || N < 1 || K < 1) { shakeInput(); return; }
+    if (K > N) { alert('Le nombre de modifications ne peut pas dépasser le nombre de mailles.'); return; }
+    const steps = distributeSteps(N, K);
+    lastSteps = steps; lastType = selectedType;
+    renderResults(steps, selectedType, N, K, []);
+    save();
+  }
+
+  function distributeSteps(N, K) {
+    const q = Math.floor(N/K), r = N%K;
+    const steps = []; let err = Math.floor(K/2);
+    for (let i=0;i<K;i++) { err+=r; if(err>=K){steps.push(q+1);err-=K;}else{steps.push(q);} }
+    return steps;
+  }
+
+  function renderResults(steps, type, N, K, checkedIndexes) {
+    if (N && K) {
+      document.getElementById('info-n').textContent = N;
+      document.getElementById('info-k').textContent = K;
+      document.getElementById('info-k-lbl').textContent = type==='augm.'?'Augm.':'Dim.';
+      document.getElementById('info-f').textContent = type==='augm.'?N+K:N-K;
+      document.getElementById('compact').textContent = getCompact(steps, type);
+      document.getElementById('sequence').textContent = steps.map(s=>s+' m. → 1 '+type).join('  ·  ');
+    }
+    const list = document.getElementById('steps-list');
+    list.innerHTML = '';
+    totalSteps = steps.length; doneSteps = 0;
+    let cursor = 1;
+    steps.forEach((s,i) => {
+      const start=cursor, end=cursor+s-1; cursor+=s;
+      const el = document.createElement('div');
+      const isDone = checkedIndexes.includes(i);
+      if (isDone) doneSteps++;
+      el.className = 'step' + (isDone ? ' done' : '');
+      el.dataset.i = i;
+      el.innerHTML =
+        '<div class="step-badge">'+(i+1)+'</div>'+
+        '<div class="step-body">'+
+          '<div class="step-main">'+s+' m. → 1 '+type+'</div>'+
+          '<div class="step-hint">Maille'+(s>1?'s '+start+'–'+end:' '+start)+'</div>'+
+        '</div>'+
+        '<div class="step-icon">✓</div>';
+      el.addEventListener('click', ()=>{ toggleStep(el); save(); });
+      list.appendChild(el);
+    });
+    highlightNext();
+    updateProgress();
+    document.getElementById('complete-msg').classList.add('hidden');
+    const r = document.getElementById('results');
+    r.classList.remove('hidden');
+    if (!checkedIndexes.length) setTimeout(()=>r.scrollIntoView({behavior:'smooth',block:'start'}),80);
+  }
+
+  function getCompact(steps, type) {
+    const groups=[]; let cur=steps[0],cnt=1;
+    for(let i=1;i<steps.length;i++){if(steps[i]===cur)cnt++;else{groups.push({s:cur,c:cnt});cur=steps[i];cnt=1;}}
+    groups.push({s:cur,c:cnt});
+    return groups.map(g=>{const p=g.s+' m., 1 '+type;return g.c>1?g.c+'×('+p+')':p;}).join('  +  ');
+  }
+
+  function toggleStep(el) {
+    const was = el.classList.contains('done');
+    el.classList.toggle('done');
+    doneSteps += was?-1:1;
+    highlightNext(); updateProgress();
+  }
+
+  function highlightNext() {
+    document.querySelectorAll('.step').forEach(e=>e.classList.remove('active-next'));
+    const first=[...document.querySelectorAll('.step')].find(e=>!e.classList.contains('done'));
+    if(first) first.classList.add('active-next');
+  }
+
+  function updateProgress() {
+    const pct = totalSteps>0?(doneSteps/totalSteps)*100:0;
+    document.getElementById('bar').style.width=pct+'%';
+    document.getElementById('prog-done').textContent=doneSteps;
+    document.getElementById('prog-total').textContent=totalSteps;
+    document.getElementById('complete-msg').classList.toggle('hidden', doneSteps<totalSteps||totalSteps===0);
+  }
+
+  function resetSteps() {
+    document.querySelectorAll('.step').forEach(e=>e.classList.remove('done'));
+    doneSteps=0; highlightNext(); updateProgress(); save();
+  }
+
+  function shakeInput() {
+    document.querySelectorAll('input').forEach(i=>{i.style.borderColor='#F87171';setTimeout(()=>i.style.borderColor='',800);});
+  }
+
+  document.addEventListener('keydown', e=>{ if(e.key==='Enter') calculate(); });
+  window.addEventListener('load', load);
+</script>
+</body>
+</html>
