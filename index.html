@@ -604,7 +604,13 @@ function resetRepartition() {
   document.getElementById('increases').value = '';
   document.getElementById('results').classList.add('hidden');
   doneSteps = 0; totalSteps = 0;
-  save();
+  lastSteps = [];
+  const data = JSON.parse(localStorage.getItem(STORE) || '{}');
+  data.steps = [];
+  data.checked = [];
+  data.stitches = '';
+  data.increases = '';
+  localStorage.setItem(STORE, JSON.stringify(data));
 }
 
   function updateProgress() {
