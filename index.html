@@ -386,6 +386,7 @@
     <button class="toggle-btn" id="btn-dim" onclick="setType('dim.',this,'dim')">⬇ Diminution</button>
   </div>
   <button class="btn-cta" onclick="calculate()">Calculer la répartition</button>
+  <button class="btn-reset" onclick="resetRepartition()" style="margin-top:8px">↺ Réinitialiser la répartition</button>
 </div>
 
 <!-- Résultats -->
@@ -597,6 +598,14 @@
     const first=[...document.querySelectorAll('.step')].find(e=>!e.classList.contains('done'));
     if(first) first.classList.add('active-next');
   }
+
+function resetRepartition() {
+  document.getElementById('stitches').value = '';
+  document.getElementById('increases').value = '';
+  document.getElementById('results').classList.add('hidden');
+  doneSteps = 0; totalSteps = 0;
+  save();
+}
 
   function updateProgress() {
     const pct = totalSteps>0?(doneSteps/totalSteps)*100:0;
