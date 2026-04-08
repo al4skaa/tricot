@@ -23,7 +23,7 @@
     --surface:     rgba(255,255,255,0.70);
     --surface-2:   rgba(255,255,255,0.50);
     --surface-3:   rgba(239,170,196,0.15);
-    --text:        #3A2830;
+    --text:        #9a7888;
     --text-soft:   #6B4858;
     --muted:       #9A7888;
     --done:        #C4A8B0;
@@ -75,7 +75,14 @@
     box-shadow: 0 2px 12px rgba(239,170,196,0.12);
   }
   .cta-projet:hover { border-color: var(--accent-dim); box-shadow: 0 4px 18px rgba(239,170,196,0.25); }
-  .cta-projet-text { font-family: 'Funnel Display', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--text); }
+  
+  .cta-projet-text {
+  display: flex; align-items: center; gap: 9px;
+  font-family: 'Funnel Display', sans-serif;
+  font-size: 0.72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--muted);
+}
   .cta-projet-arrow {
     width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0;
     background: linear-gradient(135deg, var(--blush-pop), var(--pastel-pink));
@@ -346,10 +353,13 @@
     <p>compteur de rangs & répartition des mailles</p>
   </header>
 
-  <div class="cta-projet" onclick="switchPage('projets')">
-    <div class="cta-projet-text">🪡 commencer un nouveau projet</div>
-    <div class="cta-projet-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+<div class="cta-projet" onclick="switchPage('projets')">
+  <div class="cta-projet-text">
+    <div class="dot-label"></div>
+    commencer un nouveau projet
   </div>
+  <div class="cta-projet-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+</div>
 
   <div class="rang-card">
     <div class="rang-header">
