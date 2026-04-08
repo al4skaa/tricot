@@ -2,742 +2,732 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-  <meta name="theme-color" content="#1A1410">
+  <meta name="theme-color" content="#FFC4D1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Tricot">
-  <link rel="manifest" href="data:application/json,{
-    &quot;name&quot;: &quot;Tricot&quot;,
-    &quot;short_name&quot;: &quot;Tricot&quot;,
-    &quot;start_url&quot;: &quot;.&quot;,
-    &quot;display&quot;: &quot;standalone&quot;,
-    &quot;background_color&quot;: &quot;#1A1410&quot;,
-    &quot;theme_color&quot;: &quot;#D97B4F&quot;,
-    &quot;icons&quot;: [{
-      &quot;src&quot;: &quot;data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧶</text></svg>&quot;,
-      &quot;sizes&quot;: &quot;any&quot;,
-      &quot;type&quot;: &quot;image/svg+xml&quot;
-    }]
-  }">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧶</text></svg>">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Assistant tricot - al4skaa</title>
+<title>Tricot · al4skaa</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
   :root {
-    --accent:     #D97B4F;   /* terracotta */
-    --accent-2:   #C4914A;   /* ambre doré */
-    --accent-3:   #8E6C4E;   /* brun doux */
-    --bg:         #1A1410;   /* brun très sombre */
-    --surface:    #231C16;   /* brun sombre */
-    --surface-2:  #2D241C;   /* brun moyen */
-    --border:     rgba(255,220,180,0.08);
-    --border-warm:rgba(217,123,79,0.25);
-    --text:       #F5EDE3;   /* crème */
-    --muted:      #8A7B6E;   /* sable foncé */
-    --done:       #4A3E34;
-    --green:      #6DBF8A;
-    --radius:     18px;
-    --cat-skin:   #F2DFC8;
+    --blush-pop:   #EFAAC4;
+    --pastel-pink: #FFC4D1;
+    --soft-blush:  #FFE8E1;
+    --accent-dim:  #C8709A;
+    --border:      rgba(239,170,196,0.28);
+    --border-soft: rgba(239,170,196,0.5);
+    --surface:     rgba(255,255,255,0.70);
+    --surface-2:   rgba(255,255,255,0.50);
+    --surface-3:   rgba(239,170,196,0.15);
+    --text:        #3A2830;
+    --text-soft:   #6B4858;
+    --muted:       #9A7888;
+    --done:        #C4A8B0;
+    --green:       #6A9A6A;
+    --radius:      20px;
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
+  html, body { min-height: 100%; }
   body {
     font-family: 'DM Sans', system-ui, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    padding: 20px 16px 70px;
-    max-width: 520px;
-    margin: 0 auto;
+    background: linear-gradient(150deg, #FFE8E1 0%, #FFC4D1 45%, #EFAAC4 80%, #FFE8E1 100%);
+    background-attachment: fixed;
+    color: var(--text); min-height: 100vh;
+    padding: 0 0 30px; max-width: 520px; margin: 0 auto;
   }
+  .page { display: none; padding: 20px 16px; }
+  .page.active { display: block; animation: fadeUp 0.25s ease both; }
 
   /* ── HEADER ── */
-  header {
-    padding: 40px 0 32px;
-    text-align: center;
-  }
+  header { padding: 44px 0 22px; text-align: center; }
   .logo {
-    width: 62px; height: 62px;
-    background: linear-gradient(145deg, #3D2B1A, #2D1F12);
-    border: 1px solid var(--border-warm);
-    border-radius: 20px;
+    width: 62px; height: 62px; background: rgba(255,255,255,0.75);
+    border: 1.5px solid var(--border-soft); border-radius: 20px;
     display: flex; align-items: center; justify-content: center;
-    font-size: 1.7rem;
-    margin: 0 auto 18px;
-    box-shadow: 0 8px 32px rgba(217,123,79,0.18), inset 0 1px 0 rgba(255,220,180,0.08);
+    font-size: 1.8rem; margin: 0 auto 14px;
+    box-shadow: 0 4px 18px rgba(239,170,196,0.25);
   }
-  header h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 2rem; font-weight: 400; letter-spacing: -0.5px;
-    color: var(--text);
+  header h1 { font-family: 'Funnel Display', sans-serif; font-size: 2.3rem; font-weight: 700; color: var(--text); letter-spacing: -0.5px; line-height: 1; }
+  .header-dot { color: var(--accent-dim); }
+  header p { font-family: 'Funnel Display', sans-serif; font-weight: 300; color: var(--muted); font-size: 0.92rem; margin-top: 6px; }
+  .page-header { padding: 44px 0 22px; text-align: center; }
+  .page-header h2 { font-family: 'Funnel Display', sans-serif; font-size: 2rem; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
+  .page-header p { font-family: 'Funnel Display', sans-serif; font-weight: 300; color: var(--muted); font-size: 0.9rem; margin-top: 6px; }
+  .back-btn {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-family: 'Funnel Display', sans-serif; font-size: 0.82rem; font-weight: 600;
+    color: var(--muted); background: var(--surface); border: 1.5px solid var(--border);
+    border-radius: 10px; padding: 6px 14px; cursor: pointer; transition: all 0.2s; margin-bottom: 18px;
   }
-  .header-accent {
-    color: var(--accent);
+  .back-btn:hover { color: var(--accent-dim); border-color: var(--border-soft); }
+
+  /* ── CTA PROJET ── */
+  .cta-projet {
+    background: var(--surface); border: 1.5px solid var(--border-soft);
+    border-radius: 14px; padding: 13px 18px; margin-bottom: 14px;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    cursor: pointer; backdrop-filter: blur(8px);
+    transition: box-shadow 0.2s, border-color 0.2s;
+    box-shadow: 0 2px 12px rgba(239,170,196,0.12);
   }
-  header p {
-    color: var(--muted);
-    font-size: 0.86rem;
-    margin-top: 7px;
-    font-weight: 400;
-    letter-spacing: 0.02em;
+  .cta-projet:hover { border-color: var(--accent-dim); box-shadow: 0 4px 18px rgba(239,170,196,0.25); }
+  .cta-projet-text { font-family: 'Funnel Display', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--text); }
+  .cta-projet-arrow {
+    width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--blush-pop), var(--pastel-pink));
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 0.9rem; box-shadow: 0 2px 8px rgba(239,170,196,0.35);
   }
 
   /* ── CARDS ── */
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 22px;
-    margin-bottom: 12px;
-  }
-  .card-warm {
-    background: linear-gradient(145deg, #261D15, #231916);
-    border-color: var(--border-warm);
-  }
+  .card { background: var(--surface); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 22px; margin-bottom: 12px; box-shadow: 0 4px 24px rgba(239,170,196,0.12); backdrop-filter: blur(8px); }
+  .card-accent { border-color: var(--border-soft); }
   .section-label {
-    font-size: 0.68rem; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 0.12em;
-    color: var(--muted); margin-bottom: 16px;
-    display: flex; align-items: center; gap: 8px;
+    font-family: 'Funnel Display', sans-serif; font-size: 0.72rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 16px;
+    display: flex; align-items: center; gap: 9px;
   }
-  .section-label::before {
-    content: '';
-    display: inline-block;
-    width: 3px; height: 14px;
-    background: linear-gradient(180deg, var(--accent), var(--accent-2));
-    border-radius: 2px;
-    flex-shrink: 0;
-  }
+  .dot-label { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; background: var(--accent-dim); box-shadow: 0 0 6px rgba(200,112,154,0.5); }
+  .dot-peach { background: #C88050; box-shadow: 0 0 6px rgba(200,128,80,0.5); }
+  .dot-green { background: var(--green); box-shadow: 0 0 6px rgba(106,154,106,0.5); }
 
   /* ── INPUTS ── */
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
   .form-group { display: flex; flex-direction: column; gap: 6px; }
-  .form-group label { font-size: 0.76rem; font-weight: 500; color: var(--muted); }
-  input[type=number] {
-    padding: 13px 14px;
-    background: var(--surface-2);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    color: var(--text);
-    font-size: 1.05rem; font-weight: 500; font-family: 'DM Sans', inherit;
-    outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    -moz-appearance: textfield; width: 100%;
+  .form-group label { font-family: 'Funnel Display', sans-serif; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+  input[type=number], input[type=text], input[type=url] {
+    padding: 13px 14px; background: var(--surface-2); border: 1.5px solid var(--border);
+    border-radius: 13px; color: var(--text); font-size: 1rem; font-weight: 500;
+    font-family: 'DM Sans', inherit; outline: none;
+    transition: border-color 0.25s, box-shadow 0.25s; -moz-appearance: textfield; width: 100%;
   }
   input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; }
-  input[type=number]:focus {
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px rgba(217,123,79,0.15);
-  }
-  input[type=number]::placeholder { color: var(--done); }
+  input:focus { border-color: var(--accent-dim); box-shadow: 0 0 0 3px rgba(239,170,196,0.2); }
+  input::placeholder { color: var(--done); }
 
-  /* ── TOGGLE BTNS ── */
+  /* ── TOGGLE ── */
   .toggle-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 16px; }
-  .toggle-btn {
-    padding: 11px 10px;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    background: var(--surface-2);
-    color: var(--muted);
-    font-family: 'DM Sans', inherit;
-    font-size: 0.88rem; font-weight: 600;
-    cursor: pointer; transition: all 0.2s;
-    display: flex; align-items: center; justify-content: center; gap: 6px;
-  }
-  .toggle-btn:hover { border-color: rgba(255,220,180,0.2); color: var(--text); }
-  .toggle-btn.active-augm {
-    background: linear-gradient(135deg, rgba(217,123,79,0.18), rgba(196,145,74,0.1));
-    border-color: var(--accent);
-    color: #F0B07A;
-  }
-  .toggle-btn.active-dim {
-    background: linear-gradient(135deg, rgba(142,108,78,0.25), rgba(196,145,74,0.12));
-    border-color: var(--accent-2);
-    color: #D4A96A;
-  }
+  .toggle-btn { padding: 11px 10px; border: 1.5px solid var(--border); border-radius: 13px; background: var(--surface-2); color: var(--muted); font-family: 'Funnel Display', sans-serif; font-size: 0.92rem; font-weight: 600; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px; }
+  .toggle-btn:hover { border-color: var(--border-soft); color: var(--text-soft); }
+  .toggle-btn.active-augm { background: rgba(239,170,196,0.2); border-color: var(--accent-dim); color: var(--accent-dim); }
+  .toggle-btn.active-dim  { background: rgba(200,128,80,0.12); border-color: #C88050; color: #A06030; }
 
-  /* ── CTA BUTTON ── */
-  .btn-cta {
-    width: 100%; padding: 14px;
-    background: linear-gradient(135deg, var(--accent), var(--accent-2));
-    color: #1A1410;
-    border: none; border-radius: 13px;
-    font-family: 'DM Sans', inherit;
-    font-size: 0.95rem; font-weight: 700;
-    cursor: pointer; transition: opacity 0.2s, transform 0.15s;
-    box-shadow: 0 4px 22px rgba(217,123,79,0.28);
-    letter-spacing: 0.01em;
-  }
+  /* ── BTNS ── */
+  .btn-cta { width: 100%; padding: 14px; background: linear-gradient(135deg, var(--blush-pop), var(--pastel-pink)); color: #fff; border: none; border-radius: 14px; font-family: 'Funnel Display', sans-serif; font-size: 1rem; font-weight: 700; cursor: pointer; transition: opacity 0.2s, transform 0.15s; box-shadow: 0 4px 18px rgba(239,170,196,0.4); }
   .btn-cta:hover { opacity: 0.88; }
   .btn-cta:active { transform: scale(0.98); }
+  .btn-reset { width: 100%; padding: 12px; margin-top: 10px; background: transparent; border: 1.5px solid var(--border-soft); border-radius: 13px; color: var(--muted); font-family: 'Funnel Display', sans-serif; font-size: 0.88rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+  .btn-reset:hover { border-color: var(--accent-dim); color: var(--accent-dim); }
+  .btn-icon { background: none; border: none; color: var(--done); font-size: 0.9rem; cursor: pointer; padding: 5px; border-radius: 8px; transition: all 0.2s; }
+  .btn-icon:hover { color: #D47080; background: rgba(212,112,128,0.1); }
+  .btn-icon.edit:hover { color: var(--accent-dim); background: rgba(239,170,196,0.15); }
 
   /* ── RANG CARD ── */
-  .rang-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 22px;
-    margin-bottom: 12px;
-  }
-  .rang-header {
-    display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 20px;
-  }
-  .rang-title {
-    font-size: 0.68rem; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 0.12em;
-    color: var(--accent);
-    display: flex; align-items: center; gap: 8px;
-  }
-  .rang-title::before {
-    content: '';
-    display: inline-block;
-    width: 3px; height: 14px;
-    background: linear-gradient(180deg, var(--accent), var(--accent-2));
-    border-radius: 2px;
-  }
-  .rang-reset-btn {
-    font-size: 0.72rem; font-weight: 600;
-    color: var(--muted);
-    background: var(--surface-2);
-    border: 1px solid var(--border);
-    border-radius: 9px; padding: 5px 12px;
-    cursor: pointer; font-family: 'DM Sans', inherit;
-    transition: all 0.2s;
-  }
-  .rang-reset-btn:hover { border-color: var(--accent); color: var(--accent); }
-
-  /* ── PELOTE (remplace le chat) ── */
-  .pelote-wrap {
-    position: relative;
-    width: 140px;
-    margin: 0 auto 22px;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .pelote-circle {
-    width: 140px; height: 140px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 38% 35%, #F0C09A 0%, #D97B4F 45%, #A85A2E 100%);
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    box-shadow:
-      0 6px 28px rgba(217,123,79,0.35),
-      inset -8px -8px 20px rgba(100,40,10,0.35),
-      inset 6px 6px 14px rgba(255,200,150,0.2);
-    position: relative;
-    overflow: hidden;
-  }
-  /* Fils de laine stylisés */
-  .pelote-circle::before,
-  .pelote-circle::after {
-    content: '';
-    position: absolute;
-    border-radius: 50%;
-    border: 2px solid rgba(255,220,170,0.25);
-    pointer-events: none;
-  }
-  .pelote-circle::before {
-    width: 100px; height: 60px;
-    top: 30px; left: 10px;
-    transform: rotate(-30deg);
-  }
-  .pelote-circle::after {
-    width: 80px; height: 110px;
-    top: 10px; left: 30px;
-    transform: rotate(20deg);
-  }
-  .rang-number {
-    font-family: 'DM Serif Display', serif;
-    font-size: 3rem; font-weight: 400;
-    letter-spacing: -2px; line-height: 1;
-    color: #FFF5EC;
-    text-shadow: 0 2px 8px rgba(100,40,10,0.5);
-    position: relative; z-index: 1;
-    transition: transform 0.15s cubic-bezier(0.34,1.56,0.64,1);
-  }
+  .rang-card { background: var(--surface); border: 1.5px solid var(--border-soft); border-radius: var(--radius); padding: 22px; margin-bottom: 12px; box-shadow: 0 4px 24px rgba(239,170,196,0.12); backdrop-filter: blur(8px); }
+  .rang-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+  .rang-title { font-family: 'Funnel Display', sans-serif; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); display: flex; align-items: center; gap: 9px; }
+  .rang-reset-btn { font-family: 'Funnel Display', sans-serif; font-size: 0.78rem; font-weight: 600; color: var(--muted); background: var(--surface-2); border: 1.5px solid var(--border); border-radius: 9px; padding: 5px 13px; cursor: pointer; transition: all 0.2s; }
+  .rang-reset-btn:hover { border-color: var(--border-soft); color: var(--accent-dim); }
+  .pelote-counter { width: 150px; margin: 0 auto 24px; }
+  .pelote-bg { width: 150px; height: 150px; border-radius: 50%; background: linear-gradient(145deg, #EFAAC4 0%, #FFC4D1 60%, #FFE8E1 100%); border: 2px solid rgba(255,255,255,0.85); box-shadow: 0 8px 32px rgba(239,170,196,0.35), inset 0 2px 8px rgba(255,255,255,0.6); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; }
+  .rang-number { font-family: 'Funnel Display', sans-serif; font-size: 3.4rem; font-weight: 800; line-height: 1; color: #fff; text-shadow: 0 2px 8px rgba(180,80,120,0.2); transition: transform 0.15s cubic-bezier(0.34,1.56,0.64,1); }
   .rang-number.bump { transform: scale(1.22); }
-  .rang-sub {
-    font-size: 0.6rem; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 0.14em;
-    color: rgba(255,245,236,0.75);
-    position: relative; z-index: 1;
-    margin-top: 3px;
-  }
-
-  /* ── RANG CONTROLS ── */
-  .rang-controls {
-    display: flex; align-items: center; justify-content: center; gap: 16px;
-  }
-  .rang-btn {
-    width: 54px; height: 54px;
-    border-radius: 50%; border: none;
-    font-size: 1.5rem; line-height: 1;
-    cursor: pointer; font-family: inherit;
-    transition: transform 0.15s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .rang-btn-minus {
-    background: var(--surface-2);
-    color: var(--muted);
-    border: 1px solid var(--border);
-    font-size: 1.6rem;
-  }
-  .rang-btn-minus:hover { color: var(--accent); border-color: var(--accent); }
-  .rang-btn-plus {
-    background: linear-gradient(135deg, var(--accent), var(--accent-2));
-    color: #1A1410;
-    box-shadow: 0 4px 20px rgba(217,123,79,0.38);
-    font-size: 1.9rem; font-weight: 300;
-  }
-  .rang-btn-plus:hover { box-shadow: 0 6px 26px rgba(217,123,79,0.55); }
+  .rang-label-small { font-family: 'Funnel Display', sans-serif; font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.16em; color: rgba(255,255,255,0.75); }
+  .rang-controls { display: flex; align-items: center; justify-content: center; gap: 16px; }
+  .rang-btn { width: 54px; height: 54px; border-radius: 50%; border: none; font-size: 1.6rem; cursor: pointer; transition: transform 0.15s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s; display: flex; align-items: center; justify-content: center; }
+  .rang-btn-minus { background: var(--surface-2); color: var(--muted); border: 1.5px solid var(--border-soft); }
+  .rang-btn-minus:hover { color: var(--accent-dim); border-color: var(--accent-dim); }
+  .rang-btn-plus { background: linear-gradient(135deg, var(--blush-pop), var(--pastel-pink)); color: #fff; box-shadow: 0 4px 16px rgba(239,170,196,0.45); font-size: 1.9rem; }
+  .rang-btn-plus:hover { box-shadow: 0 6px 22px rgba(239,170,196,0.6); }
   .rang-btn:active { transform: scale(0.88); }
-
-  /* ── DOTS ── */
-  .rang-dots {
-    display: flex; gap: 6px; justify-content: center;
-    margin-top: 16px; flex-wrap: wrap;
-    max-width: 260px; margin-left: auto; margin-right: auto;
-  }
-  .rang-dot {
-    width: 7px; height: 7px; border-radius: 50%;
-    background: rgba(217,123,79,0.18);
-    border: 1px solid rgba(217,123,79,0.35);
-    transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
-  }
-  .rang-dot.filled {
-    background: linear-gradient(135deg, var(--accent), var(--accent-2));
-    border-color: transparent;
-    box-shadow: 0 0 5px rgba(217,123,79,0.5);
-  }
-
-  /* ── TAG BADGE ── */
-  .tag {
-    display: inline-flex; align-items: center; gap: 5px;
-    background: rgba(217,123,79,0.12);
-    border: 1px solid rgba(217,123,79,0.2);
-    color: var(--accent);
-    border-radius: 7px; padding: 2px 9px;
-    font-size: 0.78rem; font-weight: 600;
-  }
 
   /* ── STATS ── */
   .stats-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-bottom: 14px; }
-  .stat-chip {
-    background: var(--surface-2);
-    border: 1px solid var(--border);
-    border-radius: 13px; padding: 13px 10px; text-align: center;
-    transition: border-color 0.2s;
-  }
-  .stat-chip:hover { border-color: var(--border-warm); }
-  .stat-val {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.7rem; font-weight: 400;
-    color: var(--text); letter-spacing: -0.5px;
-  }
-  .stat-lbl { font-size: 0.67rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); margin-top: 3px; }
-
-  /* ── FORMULA BLOCKS ── */
-  .formula-block {
-    background: var(--surface-2);
-    border: 1px solid var(--border);
-    border-radius: 12px; padding: 13px 15px; margin-bottom: 8px;
-    border-left: 3px solid var(--accent);
-  }
-  .formula-block.amber { border-left-color: var(--accent-2); }
-  .formula-block .flabel {
-    font-size: 0.66rem; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 0.1em;
-    color: var(--accent); margin-bottom: 6px;
-  }
-  .formula-block.amber .flabel { color: var(--accent-2); }
-  .formula-block .fval { font-size: 0.87rem; color: var(--text); line-height: 1.65; }
-
-  /* ── PROGRESS ── */
+  .stat-chip { background: var(--surface-2); border: 1.5px solid var(--border); border-radius: 14px; padding: 13px 10px; text-align: center; transition: border-color 0.2s; }
+  .stat-chip:hover { border-color: var(--border-soft); }
+  .stat-val { font-family: 'Funnel Display', sans-serif; font-size: 1.85rem; font-weight: 700; color: var(--text); }
+  .stat-lbl { font-family: 'Funnel Display', sans-serif; font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); margin-top: 3px; }
+  .divider { height: 1px; background: var(--border); margin: 4px 0 14px; }
+  .formula-block { background: var(--surface-2); border: 1.5px solid var(--border); border-left: 3px solid var(--accent-dim); border-radius: 13px; padding: 13px 15px; margin-bottom: 8px; }
+  .formula-block.peach { border-left-color: #C88050; }
+  .formula-block .flabel { font-family: 'Funnel Display', sans-serif; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-dim); margin-bottom: 5px; }
+  .formula-block.peach .flabel { color: #C88050; }
+  .formula-block .fval { font-size: 0.84rem; color: var(--text-soft); line-height: 1.65; }
   .progress-wrap { margin-bottom: 16px; }
-  .progress-meta {
-    display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;
-  }
-  .progress-meta span { font-size: 0.79rem; font-weight: 500; color: var(--muted); }
-  .bar-bg { height: 6px; background: var(--surface-2); border-radius: 10px; overflow: hidden; }
-  .bar-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--accent), var(--accent-2));
-    border-radius: 10px;
-    transition: width 0.45s cubic-bezier(0.34,1.56,0.64,1);
-  }
-
-  /* ── STEPS ── */
+  .progress-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .progress-meta span { font-family: 'Funnel Display', sans-serif; font-size: 0.78rem; font-weight: 600; color: var(--muted); }
+  .bar-bg { height: 6px; background: var(--surface-3); border-radius: 10px; overflow: hidden; }
+  .bar-fill { height: 100%; background: linear-gradient(90deg, var(--blush-pop), var(--pastel-pink)); border-radius: 10px; transition: width 0.45s cubic-bezier(0.34,1.56,0.64,1); }
   .steps-list { display: flex; flex-direction: column; gap: 7px; }
-  .step {
-    display: grid; grid-template-columns: 38px 1fr auto;
-    align-items: center; gap: 12px;
-    padding: 13px 14px;
-    background: var(--surface-2);
-    border: 1px solid var(--border);
-    border-radius: 13px; cursor: pointer;
-    transition: border-color 0.2s, background 0.2s, opacity 0.2s;
-    user-select: none; -webkit-tap-highlight-color: transparent;
-  }
-  .step:hover { border-color: rgba(217,123,79,0.3); }
-  .step.active-next {
-    border-color: var(--accent);
-    background: rgba(217,123,79,0.07);
-    box-shadow: 0 0 0 1px rgba(217,123,79,0.2);
-  }
-  .step.done { opacity: 0.36; border-color: var(--border); background: var(--surface-2); }
-  .step-badge {
-    width: 36px; height: 36px; border-radius: 11px;
-    background: rgba(217,123,79,0.12);
-    border: 1px solid rgba(217,123,79,0.2);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.72rem; font-weight: 800; color: var(--accent);
-    transition: all 0.2s; flex-shrink: 0;
-  }
-  .step.done .step-badge { background: var(--surface); border-color: var(--border); color: var(--done); }
-  .step.active-next .step-badge {
-    background: var(--accent); border-color: var(--accent);
-    color: #1A1410;
-    box-shadow: 0 2px 10px rgba(217,123,79,0.4);
-  }
+  .step { display: grid; grid-template-columns: 38px 1fr auto; align-items: center; gap: 12px; padding: 13px 14px; background: var(--surface-2); border: 1.5px solid var(--border); border-radius: 13px; cursor: pointer; transition: border-color 0.2s, background 0.2s, opacity 0.2s; user-select: none; }
+  .step:hover { border-color: var(--border-soft); }
+  .step.active-next { border-color: var(--accent-dim); background: rgba(239,170,196,0.1); }
+  .step.done { opacity: 0.35; }
+  .step.locked { opacity: 1; cursor: not-allowed; }
+  .step.locked:hover { border-color: var(--border) !important; }
+  .step-badge { width: 36px; height: 36px; border-radius: 11px; background: rgba(239,170,196,0.15); border: 1.5px solid rgba(239,170,196,0.3); display: flex; align-items: center; justify-content: center; font-family: 'Funnel Display', sans-serif; font-size: 0.88rem; font-weight: 700; color: var(--accent-dim); flex-shrink: 0; }
+  .step.done .step-badge { background: var(--surface-3); border-color: var(--border); color: var(--done); }
+  .step.active-next .step-badge { background: var(--blush-pop); border-color: var(--blush-pop); color: #fff; }
   .step-body { min-width: 0; }
-  .step-main { font-size: 0.93rem; font-weight: 600; color: var(--text); transition: all 0.2s; }
+  .step-main { font-family: 'Funnel Display', sans-serif; font-size: 0.93rem; font-weight: 600; color: var(--text); }
   .step.done .step-main { text-decoration: line-through; color: var(--done); }
-  .step-hint { font-size: 0.71rem; color: var(--muted); margin-top: 2px; }
+  .step-hint { font-size: 0.7rem; color: var(--muted); margin-top: 2px; }
   .step.done .step-hint { color: var(--done); }
-  .step-icon { font-size: 1rem; opacity: 0; transition: opacity 0.2s; flex-shrink: 0; }
+  .step-icon { font-size: 0.85rem; opacity: 0; transition: opacity 0.2s; flex-shrink: 0; color: var(--accent-dim); }
   .step.done .step-icon { opacity: 1; }
+  .step.locked .step-icon { opacity: 0.3; font-size: 0.7rem; }
+  .step.locked .step-icon::before { content: '🔒'; }
+  .complete-card { background: rgba(106,154,106,0.1); border: 1.5px solid rgba(106,154,106,0.25); border-radius: 15px; padding: 20px; text-align: center; margin-top: 12px; }
+  .complete-card .big { font-size: 2.2rem; }
+  .complete-card p { font-family: 'Funnel Display', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--green); margin-top: 8px; }
+  .complete-card small { font-family: 'Funnel Display', sans-serif; font-size: 0.8rem; color: var(--muted); display: block; margin-top: 4px; }
 
-  /* ── COMPLETE CARD ── */
-  .complete-card {
-    background: linear-gradient(135deg, rgba(109,191,138,0.1), rgba(60,150,90,0.06));
-    border: 1px solid rgba(109,191,138,0.22);
-    border-radius: 14px; padding: 22px; text-align: center; margin-top: 12px;
-  }
-  .complete-card .big { font-size: 2.4rem; }
-  .complete-card p { font-size: 1rem; font-weight: 700; color: var(--green); margin-top: 8px; font-family: 'DM Serif Display', serif; }
-  .complete-card small { font-size: 0.8rem; color: var(--muted); display: block; margin-top: 4px; }
+  /* ════════════════════════
+     PAGE 2 — PROJETS
+  ════════════════════════ */
+  .projects-grid { display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px; }
 
-  /* ── RESET BTN ── */
-  .btn-reset {
-    width: 100%; padding: 12px; margin-top: 10px;
-    background: transparent;
-    border: 1px solid var(--border);
-    border-radius: 12px; color: var(--muted);
-    font-family: 'DM Sans', inherit;
-    font-size: 0.84rem; font-weight: 600;
-    cursor: pointer; transition: all 0.2s;
+  /* Project card — deux états : résumé / détail expanded */
+  .project-card {
+    background: var(--surface); border: 1.5px solid var(--border);
+    border-radius: 16px; overflow: hidden;
+    box-shadow: 0 4px 20px rgba(239,170,196,0.1); backdrop-filter: blur(8px);
+    transition: border-color 0.2s, box-shadow 0.2s;
   }
-  .btn-reset:hover { border-color: var(--accent); color: var(--accent); }
+  .project-card:hover { border-color: var(--border-soft); }
+  .project-card.active-project { border-color: var(--accent-dim); box-shadow: 0 0 0 2px rgba(239,170,196,0.2); }
 
-  /* ── DIVIDER ── */
-  .divider {
-    height: 1px;
-    background: var(--border);
-    margin: 4px 0 14px;
+  /* Ligne principale cliquable */
+  .project-summary {
+    display: flex; align-items: center; gap: 12px;
+    padding: 16px 18px; cursor: pointer;
   }
+  .project-emoji { font-size: 1.5rem; flex-shrink: 0; }
+  .project-info { flex: 1; min-width: 0; }
+  .project-name { font-family: 'Funnel Display', sans-serif; font-size: 0.98rem; font-weight: 700; color: var(--text); }
+  .project-meta { font-family: 'Funnel Display', sans-serif; font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
+  .project-actions { display: flex; gap: 4px; align-items: center; flex-shrink: 0; }
+  .project-chevron { font-size: 0.8rem; color: var(--muted); transition: transform 0.25s; margin-left: 2px; }
+  .project-card.expanded .project-chevron { transform: rotate(180deg); }
+
+  /* Détail expandable */
+  .project-detail {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), padding 0.3s;
+    border-top: 0px solid var(--border);
+  }
+  .project-card.expanded .project-detail {
+    max-height: 800px;
+    border-top-width: 1px;
+  }
+  .project-detail-inner { padding: 16px 18px 18px; }
+
+  /* Mini barre de progression dans le détail */
+  .detail-progress { margin-bottom: 14px; }
+  .detail-progress-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+  .detail-progress-top span { font-family: 'Funnel Display', sans-serif; font-size: 0.78rem; font-weight: 600; color: var(--muted); }
+  .detail-progress-top strong { font-family: 'Funnel Display', sans-serif; font-size: 0.82rem; font-weight: 700; color: var(--accent-dim); }
+
+  /* Patron badges dans le détail */
+  .patron-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  .patron-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: 'Funnel Display', sans-serif; font-size: 0.8rem; font-weight: 600;
+    color: var(--accent-dim); background: rgba(239,170,196,0.12); border: 1.5px solid rgba(239,170,196,0.3);
+    border-radius: 20px; padding: 6px 14px; text-decoration: none; transition: background 0.2s;
+  }
+  .patron-link:hover { background: rgba(239,170,196,0.22); }
+  .patron-pdf-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: 'Funnel Display', sans-serif; font-size: 0.8rem; font-weight: 600;
+    color: #C88050; background: rgba(200,128,80,0.1); border: 1.5px solid rgba(200,128,80,0.3);
+    border-radius: 20px; padding: 6px 14px;
+  }
+
+  /* Boutons d'action dans le détail */
+  .detail-actions { display: flex; gap: 8px; }
+  .detail-btn {
+    flex: 1; padding: 10px; border-radius: 11px; border: 1.5px solid var(--border-soft);
+    background: var(--surface-2); color: var(--muted);
+    font-family: 'Funnel Display', sans-serif; font-size: 0.82rem; font-weight: 600;
+    cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px;
+  }
+  .detail-btn:hover { border-color: var(--accent-dim); color: var(--accent-dim); }
+  .detail-btn.danger:hover { border-color: #D47080; color: #D47080; background: rgba(212,112,128,0.08); }
+
+  /* ── FORMULAIRE NOUVEAU PROJET ── */
+  .new-project-card { background: var(--surface); border: 1.5px solid var(--border-soft); border-radius: var(--radius); padding: 20px; margin-bottom: 12px; backdrop-filter: blur(8px); }
+  .field-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; }
+  .field-group label { font-family: 'Funnel Display', sans-serif; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+  .file-upload-zone { border: 2px dashed rgba(239,170,196,0.4); border-radius: 13px; padding: 14px; text-align: center; cursor: pointer; background: var(--surface-2); transition: border-color 0.2s, background 0.2s; position: relative; }
+  .file-upload-zone:hover { border-color: var(--accent-dim); background: rgba(239,170,196,0.08); }
+  .file-upload-zone input[type=file] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+  .file-upload-zone i { font-size: 1.3rem; color: var(--accent-dim); display: block; margin-bottom: 5px; }
+  .file-upload-zone span { font-family: 'Funnel Display', sans-serif; font-size: 0.8rem; font-weight: 600; color: var(--muted); }
+  .file-upload-zone .file-name { color: var(--accent-dim); font-size: 0.78rem; margin-top: 3px; display: block; }
+
+  /* ── MODAL ÉDITION ── */
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 200;
+    background: rgba(58,40,48,0.45); backdrop-filter: blur(6px);
+    display: flex; align-items: flex-end; justify-content: center;
+    opacity: 0; pointer-events: none; transition: opacity 0.25s;
+  }
+  .modal-overlay.open { opacity: 1; pointer-events: all; }
+  .modal-sheet {
+    background: #FFF4F7; border-radius: 24px 24px 0 0;
+    padding: 28px 22px 40px; width: 100%; max-width: 520px;
+    transform: translateY(40px); transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    box-shadow: 0 -8px 40px rgba(239,170,196,0.25);
+  }
+  .modal-overlay.open .modal-sheet { transform: translateY(0); }
+  .modal-handle { width: 36px; height: 4px; background: rgba(239,170,196,0.5); border-radius: 2px; margin: 0 auto 20px; }
+  .modal-title { font-family: 'Funnel Display', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--text); margin-bottom: 18px; }
+  .modal-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+  .modal-field label { font-family: 'Funnel Display', sans-serif; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+  .modal-actions { display: flex; gap: 10px; margin-top: 18px; }
+  .modal-btn-save { flex: 1; padding: 13px; background: linear-gradient(135deg, var(--blush-pop), var(--pastel-pink)); color: #fff; border: none; border-radius: 13px; font-family: 'Funnel Display', sans-serif; font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: opacity 0.2s; box-shadow: 0 3px 14px rgba(239,170,196,0.4); }
+  .modal-btn-save:hover { opacity: 0.88; }
+  .modal-btn-cancel { padding: 13px 20px; background: transparent; border: 1.5px solid var(--border-soft); border-radius: 13px; color: var(--muted); font-family: 'Funnel Display', sans-serif; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+  .modal-btn-cancel:hover { border-color: var(--accent-dim); color: var(--accent-dim); }
+
+  /* ── MONTAGE ── */
+  .montage-section { background: var(--surface); border: 1.5px solid var(--border-soft); border-radius: var(--radius); padding: 22px; margin-bottom: 12px; backdrop-filter: blur(8px); }
+  .montage-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+  .montage-title { font-family: 'Funnel Display', sans-serif; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); display: flex; align-items: center; gap: 9px; }
+  .montage-progress-circle { width: 160px; height: 160px; margin: 0 auto 22px; position: relative; display: flex; align-items: center; justify-content: center; }
+  .montage-progress-circle svg { position: absolute; inset: 0; transform: rotate(-90deg); }
+  .montage-circle-bg { fill: none; stroke: rgba(239,170,196,0.2); stroke-width: 8; }
+  .montage-circle-fill { fill: none; stroke: url(#pink-grad); stroke-width: 8; stroke-linecap: round; stroke-dasharray: 440; stroke-dashoffset: 440; transition: stroke-dashoffset 0.5s cubic-bezier(0.34,1.56,0.64,1); }
+  .montage-inner { text-align: center; z-index: 1; }
+  .montage-count { font-family: 'Funnel Display', sans-serif; font-size: 2.6rem; font-weight: 800; color: var(--text); line-height: 1; transition: transform 0.15s cubic-bezier(0.34,1.56,0.64,1); }
+  .montage-count.bump { transform: scale(1.18); }
+  .montage-total-label { font-family: 'Funnel Display', sans-serif; font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin-top: 2px; }
+  .montage-pct { font-family: 'Funnel Display', sans-serif; font-size: 0.88rem; font-weight: 700; color: var(--accent-dim); margin-top: 1px; }
+  .montage-controls { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; }
+  .m-btn { padding: 11px 18px; border-radius: 12px; border: 1.5px solid var(--border-soft); font-family: 'Funnel Display', sans-serif; font-size: 0.9rem; font-weight: 700; cursor: pointer; transition: all 0.2s; }
+  .m-btn-plus { background: linear-gradient(135deg, var(--blush-pop), var(--pastel-pink)); color: #fff; border-color: transparent; box-shadow: 0 3px 12px rgba(239,170,196,0.4); font-size: 1rem; padding: 12px 26px; }
+  .m-btn-plus:hover { box-shadow: 0 5px 18px rgba(239,170,196,0.55); }
+  .m-btn-minus { background: var(--surface-2); color: var(--muted); }
+  .m-btn-minus:hover { color: var(--accent-dim); border-color: var(--accent-dim); }
+  .m-btn-ten { background: rgba(239,170,196,0.12); color: var(--accent-dim); border-color: rgba(239,170,196,0.35); font-size: 0.82rem; padding: 10px 14px; }
+  .m-btn-ten:hover { background: rgba(239,170,196,0.22); }
+  .m-btn:active { transform: scale(0.93); }
+  .montage-done-banner { background: linear-gradient(135deg,rgba(106,154,106,0.15),rgba(144,200,144,0.1)); border: 1.5px solid rgba(106,154,106,0.3); border-radius: 13px; padding: 14px; text-align: center; margin-top: 14px; display: none; }
+  .montage-done-banner.show { display: block; }
+  .montage-done-banner p { font-family: 'Funnel Display', sans-serif; font-size: 1rem; font-weight: 700; color: var(--green); }
+  .montage-done-banner small { font-family: 'Funnel Display', sans-serif; font-size: 0.8rem; color: var(--muted); }
+
+  /* ── CREDITS ── */
+  .credits { text-align: center; padding: 20px 0 8px; display: flex; flex-direction: column; align-items: center; gap: 7px; }
+  .credits-text { font-family: 'Funnel Display', sans-serif; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+  .credits-link { display: inline-flex; align-items: center; gap: 8px; font-family: 'Funnel Display', sans-serif; font-size: 0.9rem; font-weight: 600; color: var(--accent-dim); text-decoration: none; background: rgba(239,170,196,0.15); border: 1.5px solid rgba(239,170,196,0.3); border-radius: 30px; padding: 7px 18px; transition: all 0.2s; }
+  .credits-link:hover { background: rgba(239,170,196,0.25); border-color: var(--accent-dim); }
+  .credits-link i { font-size: 1rem; }
 
   .hidden { display: none !important; }
-
-  @keyframes fadeUp {
-    from { opacity:0; transform:translateY(14px); }
-    to   { opacity:1; transform:translateY(0); }
-  }
-  #results { animation: fadeUp 0.35s ease both; }
-
+  @keyframes fadeUp { from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);} }
+  #results { animation: fadeUp 0.3s ease both; }
   ::-webkit-scrollbar { width: 4px; }
-  ::-webkit-scrollbar-thumb { background: var(--surface-2); border-radius: 4px; }
+  ::-webkit-scrollbar-thumb { background: rgba(239,170,196,0.3); border-radius: 4px; }
 </style>
 </head>
 <body>
 
-<header>
-  <div class="logo">🧶</div>
-  <h1>Tricot <span class="header-accent">·</span> al4skaa</h1>
-  <p>Compteur de rangs &amp; répartition des mailles</p>
-</header>
+<!-- PAGE 1 — RANGS -->
+<div class="page active" id="page-rangs">
+  <header>
+    <div class="logo">🧶</div>
+    <h1>tricot <span class="header-dot">♡</span></h1>
+    <p>compteur de rangs & répartition des mailles</p>
+  </header>
 
-<!-- ── Compteur de rangs ── -->
-<div class="rang-card card-warm">
-  <div class="rang-header">
-    <div class="rang-title">🪡 Compteur de rangs</div>
-    <button class="rang-reset-btn" onclick="resetRang()">↺ Réinitialiser</button>
+  <div class="cta-projet" onclick="switchPage('projets')">
+    <div class="cta-projet-text">🪡 commencer un nouveau projet</div>
+    <div class="cta-projet-arrow"><i class="fa-solid fa-arrow-right"></i></div>
   </div>
 
-  <div class="pelote-wrap">
-    <div class="pelote-circle">
-      <div class="rang-number" id="rang-num">0</div>
-      <div class="rang-sub">rang</div>
+  <div class="rang-card">
+    <div class="rang-header">
+      <div class="rang-title"><div class="dot-label"></div>compteur de rangs</div>
+      <button class="rang-reset-btn" onclick="resetRang()">↺ reset</button>
+    </div>
+    <div class="pelote-counter">
+      <div class="pelote-bg">
+        <div class="rang-number" id="rang-num">0</div>
+        <div class="rang-label-small">rang</div>
+      </div>
+    </div>
+    <div class="rang-controls">
+      <button class="rang-btn rang-btn-minus" onclick="changeRang(-1)">−</button>
+      <button class="rang-btn rang-btn-plus" onclick="changeRang(1)">+</button>
     </div>
   </div>
 
-  <div class="rang-controls">
-    <button class="rang-btn rang-btn-minus" onclick="changeRang(-1)">−</button>
-    <button class="rang-btn rang-btn-plus" onclick="changeRang(1)">+</button>
+  <div class="card card-accent">
+    <div class="section-label"><div class="dot-label"></div>répartition augm. & dim.</div>
+    <div class="form-row">
+      <div class="form-group"><label>mailles de départ</label><input type="number" id="stitches" placeholder="ex. 10" min="1" inputmode="numeric"></div>
+      <div class="form-group"><label>nbre de modifications</label><input type="number" id="increases" placeholder="ex. 5" min="1" inputmode="numeric"></div>
+    </div>
+    <div class="toggle-row">
+      <button class="toggle-btn active-augm" id="btn-augm" onclick="setType('augm.',this,'augm')">⬆ augmentation</button>
+      <button class="toggle-btn" id="btn-dim" onclick="setType('dim.',this,'dim')">⬇ diminution</button>
+    </div>
+    <button class="btn-cta" onclick="calculate()">✨ calculer la répartition</button>
+    <button class="btn-reset" onclick="resetRepartition()" style="margin-top:8px">↺ réinitialiser</button>
   </div>
-  <div class="rang-dots" id="rang-dots"></div>
+
+  <div id="results" class="hidden">
+    <div class="card">
+      <div class="section-label"><div class="dot-peach dot-label"></div>résumé du rang</div>
+      <div class="stats-row">
+        <div class="stat-chip"><div class="stat-val" id="info-n">—</div><div class="stat-lbl">mailles</div></div>
+        <div class="stat-chip"><div class="stat-val" id="info-k">—</div><div class="stat-lbl" id="info-k-lbl">augm.</div></div>
+        <div class="stat-chip"><div class="stat-val" id="info-f">—</div><div class="stat-lbl">après rang</div></div>
+      </div>
+      <div class="divider"></div>
+      <div class="formula-block"><div class="flabel">🧮 formule compacte</div><div class="fval" id="compact"></div></div>
+      <div class="formula-block peach"><div class="flabel">🪡 séquence complète</div><div class="fval" id="sequence"></div></div>
+    </div>
+    <div class="card card-accent">
+      <div class="section-label"><div class="dot-label"></div>étapes — appuie pour cocher</div>
+      <div class="progress-wrap">
+        <div class="progress-meta"><span>progression</span><span><strong id="prog-done">0</strong> / <strong id="prog-total">0</strong></span></div>
+        <div class="bar-bg"><div class="bar-fill" id="bar" style="width:0%"></div></div>
+      </div>
+      <div class="steps-list" id="steps-list"></div>
+      <div id="complete-msg" class="complete-card hidden"><div class="big">🎉</div><p>rang terminé !</p><small>toutes les étapes sont cochées ✨</small></div>
+      <button class="btn-reset" onclick="resetSteps()">↺ recommencer le rang</button>
+    </div>
+  </div>
+
+  <div class="credits">
+    <div class="credits-text">fait avec 🩷 par</div>
+    <a class="credits-link" href="https://www.instagram.com/alaskaa.tricot/" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i> alaskaa.tricot</a>
+  </div>
 </div>
 
-<!-- ── Répartition ── -->
-<div class="card card-warm">
-  <div class="section-label">Répartition augm. &amp; dim.</div>
-  <div class="form-row">
-    <div class="form-group">
-      <label>Mailles de départ</label>
-      <input type="number" id="stitches" placeholder="ex. 10" min="1" inputmode="numeric">
-    </div>
-    <div class="form-group">
-      <label>Nbre de modifications</label>
-      <input type="number" id="increases" placeholder="ex. 5" min="1" inputmode="numeric">
-    </div>
-  </div>
-  <div class="toggle-row">
-    <button class="toggle-btn active-augm" id="btn-augm" onclick="setType('augm.',this,'augm')">⬆ Augmentation</button>
-    <button class="toggle-btn" id="btn-dim" onclick="setType('dim.',this,'dim')">⬇ Diminution</button>
-  </div>
-  <button class="btn-cta" onclick="calculate()">Calculer la répartition</button>
-  <button class="btn-reset" onclick="resetRepartition()" style="margin-top:8px">↺ Réinitialiser</button>
-</div>
 
-<!-- ── Résultats ── -->
-<div id="results" class="hidden">
-  <div class="card card-warm">
-    <div class="section-label">Résumé du rang</div>
-    <div class="stats-row">
-      <div class="stat-chip">
-        <div class="stat-val" id="info-n">—</div>
-        <div class="stat-lbl">Mailles</div>
-      </div>
-      <div class="stat-chip">
-        <div class="stat-val" id="info-k">—</div>
-        <div class="stat-lbl" id="info-k-lbl">Augm.</div>
-      </div>
-      <div class="stat-chip">
-        <div class="stat-val" id="info-f">—</div>
-        <div class="stat-lbl">Après rang</div>
-      </div>
-    </div>
-    <div class="divider"></div>
-    <div class="formula-block">
-      <div class="flabel">Formule compacte</div>
-      <div class="fval" id="compact"></div>
-    </div>
-    <div class="formula-block amber">
-      <div class="flabel">Séquence complète</div>
-      <div class="fval" id="sequence"></div>
-    </div>
+<!-- PAGE 2 — PROJETS -->
+<div class="page" id="page-projets">
+  <div class="page-header">
+    <h2>mes projets 🧵</h2>
+    <p>monte tes mailles, suis ton avancement</p>
   </div>
 
-  <div class="card card-warm">
-    <div class="section-label">Étapes — appuyez pour cocher</div>
-    <div class="progress-wrap">
-      <div class="progress-meta">
-        <span>Progression</span>
-        <span><strong id="prog-done">0</strong> / <strong id="prog-total">0</strong></span>
+  <button class="back-btn" onclick="switchPage('rangs')"><i class="fa-solid fa-arrow-left"></i> retour</button>
+
+  <div class="new-project-card">
+    <div class="section-label"><div class="dot-label"></div>nouveau projet</div>
+    <div class="field-group"><label>nom du projet</label><input type="text" id="new-project-name" placeholder="ex. Pull hivernal…" maxlength="40"></div>
+    <div class="field-group"><label>mailles à monter</label><input type="number" id="new-project-mailles" placeholder="ex. 120" min="1" inputmode="numeric"></div>
+    <div class="field-group"><label>lien patron (URL)</label><input type="url" id="new-project-url" placeholder="https://ravelry.com/…"></div>
+    <div class="field-group" style="margin-bottom:14px;">
+      <label>patron PDF</label>
+      <div class="file-upload-zone">
+        <input type="file" accept=".pdf" id="new-project-pdf" onchange="onPdfChange(this)">
+        <i class="fa-solid fa-file-arrow-up"></i>
+        <span>glisse un PDF ou appuie pour choisir</span>
+        <span class="file-name" id="pdf-filename"></span>
       </div>
-      <div class="bar-bg"><div class="bar-fill" id="bar" style="width:0%"></div></div>
     </div>
-    <div class="steps-list" id="steps-list"></div>
-    <div id="complete-msg" class="complete-card hidden">
-      <div class="big">🎉</div>
-      <p>Rang terminé !</p>
-      <small>Toutes les étapes sont cochées</small>
+    <button class="btn-cta" onclick="addProject()">✨ créer le projet</button>
+  </div>
+
+  <div id="projects-grid" class="projects-grid"></div>
+
+  <!-- Compteur de montage du projet actif -->
+  <div id="projet-detail" class="hidden">
+    <div class="montage-section">
+      <div class="montage-header">
+        <div class="montage-title"><div class="dot-green dot-label"></div>montage des mailles</div>
+        <button class="rang-reset-btn" onclick="resetMontage()">↺ reset</button>
+      </div>
+      <div class="montage-progress-circle">
+        <svg viewBox="0 0 160 160" width="160" height="160">
+          <defs>
+            <linearGradient id="pink-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#EFAAC4"/><stop offset="100%" stop-color="#FFC4D1"/>
+            </linearGradient>
+          </defs>
+          <circle class="montage-circle-bg" cx="80" cy="80" r="70"/>
+          <circle class="montage-circle-fill" id="montage-arc" cx="80" cy="80" r="70"/>
+        </svg>
+        <div class="montage-inner">
+          <div class="montage-count" id="montage-count">0</div>
+          <div class="montage-total-label" id="montage-total-label">/ 0 mailles</div>
+          <div class="montage-pct" id="montage-pct">0%</div>
+        </div>
+      </div>
+      <div class="montage-controls">
+        <button class="m-btn m-btn-minus" onclick="changeMontage(-1)">− 1</button>
+        <button class="m-btn m-btn-plus" onclick="changeMontage(1)">+ 1 maille</button>
+        <button class="m-btn m-btn-ten" onclick="changeMontage(10)">+ 10</button>
+        <button class="m-btn m-btn-minus" onclick="changeMontage(-10)">− 10</button>
+      </div>
+      <div class="montage-done-banner" id="montage-done">
+        <p>🎉 montage terminé !</p>
+        <small id="montage-done-text">toutes les mailles sont montées</small>
+      </div>
     </div>
-    <button class="btn-reset" onclick="resetSteps()">↺ Recommencer le rang</button>
+  </div>
+
+  <div class="credits" style="padding-top:12px;">
+    <div class="credits-text">fait avec 🩷 par</div>
+    <a class="credits-link" href="https://www.instagram.com/alaskaa.tricot/" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i> alaskaa.tricot</a>
   </div>
 </div>
+
+
+<!-- MODAL ÉDITION -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title">✏️ modifier le projet</div>
+    <div class="modal-field"><label>nom du projet</label><input type="text" id="edit-name" maxlength="40"></div>
+    <div class="modal-field"><label>mailles à monter</label><input type="number" id="edit-mailles" min="1" inputmode="numeric"></div>
+    <div class="modal-field"><label>lien patron (URL)</label><input type="url" id="edit-url" placeholder="https://…"></div>
+    <div class="modal-field">
+      <label>patron PDF (remplacer)</label>
+      <div class="file-upload-zone">
+        <input type="file" accept=".pdf" id="edit-pdf" onchange="onEditPdfChange(this)">
+        <i class="fa-solid fa-file-arrow-up"></i>
+        <span>glisse un PDF ou appuie</span>
+        <span class="file-name" id="edit-pdf-filename"></span>
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button class="modal-btn-cancel" onclick="closeModal()">annuler</button>
+      <button class="modal-btn-save" onclick="saveEdit()">💾 enregistrer</button>
+    </div>
+  </div>
+</div>
+
 
 <script>
-  let selectedType = 'augm.', selectedClass = 'augm';
-  let totalSteps = 0, doneSteps = 0;
-  let rangCount = 0;
-  let lastSteps = [], lastType = 'augm.';
-  const MAX_DOTS = 20;
-  const STORE = 'tricot_v1';
+/* ── NAVIGATION ── */
+function switchPage(p) {
+  document.querySelectorAll('.page').forEach(el=>el.classList.remove('active'));
+  document.getElementById('page-'+p).classList.add('active');
+  window.scrollTo(0,0);
+}
 
-  function save() {
-    const checkedIndexes = [...document.querySelectorAll('.step.done')].map(e => parseInt(e.dataset.i));
-    const data = {
-      rangCount,
-      stitches: document.getElementById('stitches').value,
-      increases: document.getElementById('increases').value,
-      type: selectedType,
-      steps: lastSteps,
-      checked: checkedIndexes
-    };
-    localStorage.setItem(STORE, JSON.stringify(data));
-  }
+/* ══════════════════════
+   PAGE 1 — RANGS
+══════════════════════ */
+let selectedType='augm.',selectedClass='augm',totalSteps=0,doneSteps=0,rangCount=0,lastSteps=[];
+const STORE='tricot_v5';
 
-  function load() {
-    try {
-      const raw = localStorage.getItem(STORE);
-      if (!raw) return;
-      const data = JSON.parse(raw);
-      if (data.rangCount !== undefined) { rangCount = data.rangCount; updateRangDisplay(false); }
-      if (data.stitches) document.getElementById('stitches').value = data.stitches;
-      if (data.increases) document.getElementById('increases').value = data.increases;
-      if (data.type) {
-        selectedType = data.type; selectedClass = data.type === 'augm.' ? 'augm' : 'dim';
-        document.querySelectorAll('.toggle-btn').forEach(b => b.className = 'toggle-btn');
-        const btn = data.type === 'augm.' ? document.getElementById('btn-augm') : document.getElementById('btn-dim');
-        btn.classList.add('active-' + selectedClass);
-      }
-      if (data.steps && data.steps.length > 0) {
-        lastSteps = data.steps; lastType = data.type || 'augm.';
-        renderResults(data.steps, data.type || 'augm.',
-          parseInt(data.stitches) || 0,
-          parseInt(data.increases) || 0,
-          data.checked || []);
-      }
-    } catch(e) { console.warn('Erreur de chargement:', e); }
-  }
+function saveRang(){
+  const checked=[...document.querySelectorAll('.step.done')].map(e=>parseInt(e.dataset.i));
+  const data=JSON.parse(localStorage.getItem(STORE)||'{}');
+  data.rang={rangCount,stitches:document.getElementById('stitches').value,increases:document.getElementById('increases').value,type:selectedType,steps:lastSteps,checked};
+  localStorage.setItem(STORE,JSON.stringify(data));
+}
+function loadRang(){
+  const d=(JSON.parse(localStorage.getItem(STORE)||'{}')).rang||{};
+  if(d.rangCount!==undefined){rangCount=d.rangCount;updateRangDisplay(false);}
+  if(d.stitches)document.getElementById('stitches').value=d.stitches;
+  if(d.increases)document.getElementById('increases').value=d.increases;
+  if(d.type){selectedType=d.type;selectedClass=d.type==='augm.'?'augm':'dim';document.querySelectorAll('.toggle-btn').forEach(b=>b.className='toggle-btn');document.getElementById(d.type==='augm.'?'btn-augm':'btn-dim').classList.add('active-'+selectedClass);}
+  if(d.steps&&d.steps.length>0){lastSteps=d.steps;renderResults(d.steps,d.type||'augm.',parseInt(d.stitches)||0,parseInt(d.increases)||0,d.checked||[]);}
+}
+function changeRang(delta){rangCount=Math.max(0,rangCount+delta);updateRangDisplay(delta>0);saveRang();}
+function resetRang(){rangCount=0;updateRangDisplay(false);saveRang();}
+function updateRangDisplay(bump){
+  const el=document.getElementById('rang-num');el.textContent=rangCount;
+  if(bump){el.classList.add('bump');setTimeout(()=>el.classList.remove('bump'),200);}
+  const s=document.querySelector('.rang-label-small');if(s)s.textContent=rangCount===1?'rang':'rangs';
+}
+function setType(type,btn,cls){selectedType=type;selectedClass=cls;document.querySelectorAll('.toggle-btn').forEach(b=>b.className='toggle-btn');btn.classList.add('active-'+cls);saveRang();}
+function calculate(){
+  const N=parseInt(document.getElementById('stitches').value),K=parseInt(document.getElementById('increases').value);
+  if(!N||!K||isNaN(N)||isNaN(K)||N<1||K<1){shakeInput();return;}
+  if(K>N){alert('Le nombre de modifications ne peut pas dépasser le nombre de mailles.');return;}
+  lastSteps=distributeSteps(N,K);renderResults(lastSteps,selectedType,N,K,[]);saveRang();
+}
+function distributeSteps(N,K){const q=Math.floor(N/K),r=N%K;const s=[];let e=Math.floor(K/2);for(let i=0;i<K;i++){e+=r;if(e>=K){s.push(q+1);e-=K;}else s.push(q);}return s;}
+function renderResults(steps,type,N,K,checked){
+  if(N&&K){document.getElementById('info-n').textContent=N;document.getElementById('info-k').textContent=K;document.getElementById('info-k-lbl').textContent=type==='augm.'?'augm.':'dim.';document.getElementById('info-f').textContent=type==='augm.'?N+K:N-K;document.getElementById('compact').textContent=getCompact(steps,type);document.getElementById('sequence').textContent=steps.map(s=>s+' m. → 1 '+type).join('  ·  ');}
+  const list=document.getElementById('steps-list');list.innerHTML='';totalSteps=steps.length;doneSteps=0;let cur=1;
+  steps.forEach((s,i)=>{const st=cur,en=cur+s-1;cur+=s;const el=document.createElement('div');const isDone=checked.includes(i);if(isDone)doneSteps++;el.className='step'+(isDone?' done':'');el.dataset.i=i;el.innerHTML='<div class="step-badge">'+(i+1)+'</div><div class="step-body"><div class="step-main">'+s+' m. → 1 '+type+'</div><div class="step-hint">maille'+(s>1?'s '+st+'–'+en:' '+st)+'</div></div><div class="step-icon">✓</div>';el.addEventListener('click',()=>{toggleStep(el);saveRang();});list.appendChild(el);});
+  highlightNext();updateProgress();document.getElementById('complete-msg').classList.add('hidden');document.getElementById('results').classList.remove('hidden');
+  if(!checked.length)setTimeout(()=>document.getElementById('results').scrollIntoView({behavior:'smooth',block:'start'}),80);
+}
+function getCompact(steps,type){const g=[];let c=steps[0],n=1;for(let i=1;i<steps.length;i++){if(steps[i]===c)n++;else{g.push({s:c,c:n});c=steps[i];n=1;}}g.push({s:c,c:n});return g.map(x=>{const p=x.s+' m., 1 '+type;return x.c>1?x.c+'×('+p+')':p;}).join('  +  ');}
+function toggleStep(el){
+  const steps=[...document.querySelectorAll('.step')];const idx=steps.indexOf(el);
+  if(el.classList.contains('done')){steps.slice(idx).forEach(s=>{if(s.classList.contains('done')){s.classList.remove('done');doneSteps--;}});}
+  else{if(!steps.slice(0,idx).every(s=>s.classList.contains('done'))){shakeStep(el);return;}el.classList.add('done');doneSteps++;}
+  highlightNext();updateProgress();
+}
+function highlightNext(){const steps=[...document.querySelectorAll('.step')];steps.forEach(e=>e.classList.remove('active-next','locked'));let f=false;steps.forEach(s=>{if(!s.classList.contains('done')&&!f){s.classList.add('active-next');f=true;}else if(!s.classList.contains('done'))s.classList.add('locked');});}
+function shakeStep(el){el.style.transition='transform 0.08s ease';el.style.transform='translateX(6px)';setTimeout(()=>el.style.transform='translateX(-5px)',80);setTimeout(()=>el.style.transform='translateX(4px)',160);setTimeout(()=>el.style.transform='translateX(0)',240);setTimeout(()=>el.style.transition='',300);}
+function resetRepartition(){document.getElementById('stitches').value='';document.getElementById('increases').value='';document.getElementById('results').classList.add('hidden');doneSteps=0;totalSteps=0;lastSteps=[];}
+function updateProgress(){const pct=totalSteps>0?(doneSteps/totalSteps)*100:0;document.getElementById('bar').style.width=pct+'%';document.getElementById('prog-done').textContent=doneSteps;document.getElementById('prog-total').textContent=totalSteps;document.getElementById('complete-msg').classList.toggle('hidden',doneSteps<totalSteps||totalSteps===0);}
+function resetSteps(){document.querySelectorAll('.step').forEach(e=>e.classList.remove('done','locked','active-next'));doneSteps=0;highlightNext();updateProgress();saveRang();}
+function shakeInput(){document.querySelectorAll('#page-rangs input').forEach(i=>{i.style.borderColor='rgba(239,170,196,0.6)';setTimeout(()=>i.style.borderColor='',800);});}
 
-  function changeRang(delta) {
-    rangCount = Math.max(0, rangCount + delta);
-    updateRangDisplay(delta > 0);
-    save();
-  }
-  function resetRang() { rangCount = 0; updateRangDisplay(false); save(); }
-  function updateRangDisplay(bump) {
-    const el = document.getElementById('rang-num');
-    el.textContent = rangCount;
-    if (bump) { el.classList.add('bump'); setTimeout(() => el.classList.remove('bump'), 200); }
-    renderDots();
-    document.querySelector('.rang-sub').textContent = rangCount === 1 ? 'rang' : 'rangs';
-  }
-  function renderDots() {
-    const container = document.getElementById('rang-dots');
-    container.innerHTML = '';
-    const shown = Math.min(rangCount, MAX_DOTS);
-    for (let i = 0; i < shown; i++) {
-      const d = document.createElement('div');
-      d.className = 'rang-dot filled';
-      container.appendChild(d);
-    }
-    if (rangCount > MAX_DOTS) {
-      const more = document.createElement('span');
-      more.style.cssText = 'font-size:0.7rem;color:var(--accent);align-self:center;margin-left:2px;';
-      more.textContent = '+' + (rangCount - MAX_DOTS);
-      container.appendChild(more);
-    }
-  }
+/* ══════════════════════
+   PAGE 2 — PROJETS
+══════════════════════ */
+let projects=[],activeProjectId=null,uploadedPdfName='',editPdfName='',editingId=null;
 
-  function setType(type, btn, cls) {
-    selectedType = type; selectedClass = cls;
-    document.querySelectorAll('.toggle-btn').forEach(b => b.className = 'toggle-btn');
-    btn.classList.add('active-' + cls);
-    save();
-  }
+function saveProjects(){const data=JSON.parse(localStorage.getItem(STORE)||'{}');data.projects=projects;data.activeProjectId=activeProjectId;localStorage.setItem(STORE,JSON.stringify(data));}
+function loadProjects(){const data=JSON.parse(localStorage.getItem(STORE)||'{}');projects=data.projects||[];activeProjectId=data.activeProjectId??null;renderProjects();if(activeProjectId!==null)openProject(activeProjectId,false);}
+function onPdfChange(input){uploadedPdfName=input.files[0]?.name||'';document.getElementById('pdf-filename').textContent=uploadedPdfName?'📄 '+uploadedPdfName:'';}
+function onEditPdfChange(input){editPdfName=input.files[0]?.name||'';document.getElementById('edit-pdf-filename').textContent=editPdfName?'📄 '+editPdfName:'';}
 
-  function calculate() {
-    const N = parseInt(document.getElementById('stitches').value);
-    const K = parseInt(document.getElementById('increases').value);
-    if (!N || !K || isNaN(N) || isNaN(K) || N < 1 || K < 1) { shakeInput(); return; }
-    if (K > N) { alert('Le nombre de modifications ne peut pas dépasser le nombre de mailles.'); return; }
-    const steps = distributeSteps(N, K);
-    lastSteps = steps; lastType = selectedType;
-    renderResults(steps, selectedType, N, K, []);
-    save();
-  }
+function addProject(){
+  const name=document.getElementById('new-project-name').value.trim();
+  if(!name){document.getElementById('new-project-name').focus();return;}
+  const emojis=['🧶','🪡','🧵','🎀','🌸','✨','🎁','🧤','🧣','👒'];
+  projects.push({id:Date.now(),name,emoji:emojis[Math.floor(Math.random()*emojis.length)],maillesTotal:parseInt(document.getElementById('new-project-mailles').value)||0,montageCount:0,patronUrl:document.getElementById('new-project-url').value.trim(),patronPdf:uploadedPdfName});
+  ['new-project-name','new-project-mailles','new-project-url'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('pdf-filename').textContent='';uploadedPdfName='';
+  saveProjects();renderProjects();
+  openProject(projects[projects.length-1].id);
+}
 
-  function distributeSteps(N, K) {
-    const q = Math.floor(N/K), r = N%K;
-    const steps = []; let err = Math.floor(K/2);
-    for (let i=0;i<K;i++) { err+=r; if(err>=K){steps.push(q+1);err-=K;}else{steps.push(q);} }
-    return steps;
-  }
+function deleteProject(id){
+  if(!confirm('Supprimer ce projet ?'))return;
+  projects=projects.filter(p=>p.id!==id);
+  if(activeProjectId===id){activeProjectId=null;document.getElementById('projet-detail').classList.add('hidden');}
+  saveProjects();renderProjects();
+}
 
-  function renderResults(steps, type, N, K, checkedIndexes) {
-    if (N && K) {
-      document.getElementById('info-n').textContent = N;
-      document.getElementById('info-k').textContent = K;
-      document.getElementById('info-k-lbl').textContent = type==='augm.'?'Augm.':'Dim.';
-      document.getElementById('info-f').textContent = type==='augm.'?N+K:N-K;
-      document.getElementById('compact').textContent = getCompact(steps, type);
-      document.getElementById('sequence').textContent = steps.map(s=>s+' m. → 1 '+type).join('  ·  ');
-    }
-    const list = document.getElementById('steps-list');
-    list.innerHTML = '';
-    totalSteps = steps.length; doneSteps = 0;
-    let cursor = 1;
-    steps.forEach((s,i) => {
-      const start=cursor, end=cursor+s-1; cursor+=s;
-      const el = document.createElement('div');
-      const isDone = checkedIndexes.includes(i);
-      if (isDone) doneSteps++;
-      el.className = 'step' + (isDone ? ' done' : '');
-      el.dataset.i = i;
-      el.innerHTML =
-        '<div class="step-badge">'+(i+1)+'</div>'+
-        '<div class="step-body">'+
-          '<div class="step-main">'+s+' m. → 1 '+type+'</div>'+
-          '<div class="step-hint">Maille'+(s>1?'s '+start+'–'+end:' '+start)+'</div>'+
-        '</div>'+
-        '<div class="step-icon">✓</div>';
-      el.addEventListener('click', ()=>{ toggleStep(el); save(); });
-      list.appendChild(el);
-    });
-    highlightNext();
-    updateProgress();
-    document.getElementById('complete-msg').classList.add('hidden');
-    const r = document.getElementById('results');
-    r.classList.remove('hidden');
-    if (!checkedIndexes.length) setTimeout(()=>r.scrollIntoView({behavior:'smooth',block:'start'}),80);
-  }
+function toggleExpand(id){
+  const card=document.querySelector(`.project-card[data-id="${id}"]`);
+  if(!card)return;
+  const wasExpanded=card.classList.contains('expanded');
+  document.querySelectorAll('.project-card.expanded').forEach(c=>c.classList.remove('expanded'));
+  if(!wasExpanded)card.classList.add('expanded');
+}
 
-  function getCompact(steps, type) {
-    const groups=[]; let cur=steps[0],cnt=1;
-    for(let i=1;i<steps.length;i++){if(steps[i]===cur)cnt++;else{groups.push({s:cur,c:cnt});cur=steps[i];cnt=1;}}
-    groups.push({s:cur,c:cnt});
-    return groups.map(g=>{const p=g.s+' m., 1 '+type;return g.c>1?g.c+'×('+p+')':p;}).join('  +  ');
-  }
+function renderProjects(){
+  const grid=document.getElementById('projects-grid');grid.innerHTML='';
+  if(projects.length===0){grid.innerHTML='<div style="font-family:\'Funnel Display\',sans-serif;font-size:0.85rem;color:var(--muted);text-align:center;padding:16px 0;">aucun projet pour l\'instant 🧶</div>';return;}
+  projects.forEach(p=>{
+    const el=document.createElement('div');
+    el.className='project-card'+(p.id===activeProjectId?' active-project':'');
+    el.dataset.id=p.id;
+    const pct=p.maillesTotal>0?Math.min(100,Math.round(p.montageCount/p.maillesTotal*100)):null;
+    const metaText=p.maillesTotal>0?p.montageCount+'/'+p.maillesTotal+' montées'+(pct!==null?' · '+pct+'%':''):'montage non défini';
 
-  function toggleStep(el) {
-    const was = el.classList.contains('done');
-    el.classList.toggle('done');
-    doneSteps += was?-1:1;
-    highlightNext(); updateProgress();
-  }
+    // Patron dans le détail
+    let patronHtml='';
+    if(p.patronUrl) patronHtml+=`<a class="patron-link" href="${p.patronUrl}" target="_blank" rel="noopener"><i class="fa-solid fa-link"></i> voir le patron</a>`;
+    if(p.patronPdf) patronHtml+=`<span class="patron-pdf-badge"><i class="fa-solid fa-file-pdf"></i> ${p.patronPdf}</span>`;
 
-  function highlightNext() {
-    document.querySelectorAll('.step').forEach(e=>e.classList.remove('active-next'));
-    const first=[...document.querySelectorAll('.step')].find(e=>!e.classList.contains('done'));
-    if(first) first.classList.add('active-next');
-  }
+    // Mini barre progression
+    const barWidth=pct!==null?pct:0;
+    const progressHtml=p.maillesTotal>0?`
+      <div class="detail-progress">
+        <div class="detail-progress-top"><span>montage</span><strong>${p.montageCount} / ${p.maillesTotal} mailles ${pct!==null?'· '+pct+'%':''}</strong></div>
+        <div class="bar-bg"><div class="bar-fill" style="width:${barWidth}%"></div></div>
+      </div>`:'';
 
-  function resetRepartition() {
-    document.getElementById('stitches').value = '';
-    document.getElementById('increases').value = '';
-    document.getElementById('results').classList.add('hidden');
-    doneSteps = 0; totalSteps = 0; lastSteps = [];
-    const data = JSON.parse(localStorage.getItem(STORE) || '{}');
-    data.steps = []; data.checked = []; data.stitches = ''; data.increases = '';
-    localStorage.setItem(STORE, JSON.stringify(data));
-  }
+    el.innerHTML=`
+      <div class="project-summary">
+        <div class="project-emoji">${p.emoji}</div>
+        <div class="project-info">
+          <div class="project-name">${p.name}</div>
+          <div class="project-meta">${metaText}</div>
+        </div>
+        <div class="project-actions">
+          <button class="btn-icon edit" title="modifier" onclick="event.stopPropagation();openEdit(${p.id})"><i class="fa-solid fa-pen"></i></button>
+          <button class="btn-icon" title="supprimer" onclick="event.stopPropagation();deleteProject(${p.id})"><i class="fa-solid fa-xmark"></i></button>
+          <i class="fa-solid fa-chevron-down project-chevron"></i>
+        </div>
+      </div>
+      <div class="project-detail">
+        <div class="project-detail-inner">
+          ${progressHtml}
+          ${patronHtml?`<div class="patron-row">${patronHtml}</div>`:''}
+          <div class="detail-actions">
+            <button class="detail-btn" onclick="openProject(${p.id})"><i class="fa-solid fa-scissors"></i> montage</button>
+          </div>
+        </div>
+      </div>`;
 
-  function updateProgress() {
-    const pct = totalSteps>0?(doneSteps/totalSteps)*100:0;
-    document.getElementById('bar').style.width=pct+'%';
-    document.getElementById('prog-done').textContent=doneSteps;
-    document.getElementById('prog-total').textContent=totalSteps;
-    document.getElementById('complete-msg').classList.toggle('hidden', doneSteps<totalSteps||totalSteps===0);
-  }
+    el.querySelector('.project-summary').addEventListener('click',()=>toggleExpand(p.id));
+    grid.appendChild(el);
+  });
+}
 
-  function resetSteps() {
-    document.querySelectorAll('.step').forEach(e=>e.classList.remove('done'));
-    doneSteps=0; highlightNext(); updateProgress(); save();
-  }
+function openProject(id,scroll=true){
+  activeProjectId=id;
+  const p=projects.find(p=>p.id===id);if(!p)return;
+  renderProjects();updateMontageUI(p);
+  document.getElementById('projet-detail').classList.remove('hidden');
+  if(scroll)setTimeout(()=>document.getElementById('projet-detail').scrollIntoView({behavior:'smooth',block:'start'}),80);
+  saveProjects();
+}
 
-  function shakeInput() {
-    document.querySelectorAll('input').forEach(i=>{
-      i.style.borderColor='#D97B4F';
-      setTimeout(()=>i.style.borderColor='',800);
-    });
-  }
+function updateMontageUI(p){
+  const total=p.maillesTotal||0,count=p.montageCount||0;
+  const pct=total>0?Math.min(100,Math.round(count/total*100)):0;
+  const offset=(2*Math.PI*70)-(pct/100)*(2*Math.PI*70);
+  document.getElementById('montage-count').textContent=count;
+  document.getElementById('montage-total-label').textContent='/ '+total+' mailles';
+  document.getElementById('montage-pct').textContent=total>0?pct+'%':'—';
+  document.getElementById('montage-arc').style.strokeDashoffset=offset;
+  const done=total>0&&count>=total;
+  document.getElementById('montage-done').classList.toggle('show',done);
+  if(done)document.getElementById('montage-done-text').textContent=p.maillesTotal+' mailles montées — c\'est parti ! 🎉';
+}
 
-  document.addEventListener('keydown', e=>{ if(e.key==='Enter') calculate(); });
-  window.addEventListener('load', load);
+function changeMontage(delta){
+  const p=projects.find(p=>p.id===activeProjectId);if(!p)return;
+  p.montageCount=Math.max(0,(p.montageCount||0)+delta);
+  if(p.maillesTotal>0)p.montageCount=Math.min(p.montageCount,p.maillesTotal);
+  const el=document.getElementById('montage-count');el.classList.add('bump');setTimeout(()=>el.classList.remove('bump'),180);
+  updateMontageUI(p);renderProjects();saveProjects();
+}
+function resetMontage(){const p=projects.find(p=>p.id===activeProjectId);if(!p)return;p.montageCount=0;updateMontageUI(p);saveProjects();}
+
+/* ── MODAL ÉDITION ── */
+function openEdit(id){
+  editingId=id;editPdfName='';
+  const p=projects.find(p=>p.id===id);if(!p)return;
+  document.getElementById('edit-name').value=p.name||'';
+  document.getElementById('edit-mailles').value=p.maillesTotal||'';
+  document.getElementById('edit-url').value=p.patronUrl||'';
+  document.getElementById('edit-pdf-filename').textContent=p.patronPdf?'📄 '+p.patronPdf:'';
+  document.getElementById('modal-overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(e){
+  if(e&&e.target!==document.getElementById('modal-overlay'))return;
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+function saveEdit(){
+  const p=projects.find(p=>p.id===editingId);if(!p)return;
+  const name=document.getElementById('edit-name').value.trim();
+  if(!name)return;
+  p.name=name;
+  const m=parseInt(document.getElementById('edit-mailles').value);
+  if(!isNaN(m)&&m>0)p.maillesTotal=m;
+  const url=document.getElementById('edit-url').value.trim();
+  p.patronUrl=url||'';
+  if(editPdfName)p.patronPdf=editPdfName;
+  saveProjects();renderProjects();
+  if(activeProjectId===editingId)updateMontageUI(p);
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.getElementById('modal-overlay').addEventListener('click',e=>{if(e.target===document.getElementById('modal-overlay'))closeModal(e);});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape')closeModal();
+  if(e.key==='Enter'&&document.getElementById('page-rangs').classList.contains('active'))calculate();
+});
+window.addEventListener('load',()=>{loadRang();loadProjects();});
 </script>
 </body>
 </html>
