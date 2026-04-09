@@ -578,7 +578,13 @@ function toggleStep(el){
 }
 function highlightNext(){const steps=[...document.querySelectorAll('.step')];steps.forEach(e=>e.classList.remove('active-next','locked'));let f=false;steps.forEach(s=>{if(!s.classList.contains('done')&&!f){s.classList.add('active-next');f=true;}else if(!s.classList.contains('done'))s.classList.add('locked');});}
 function shakeStep(el){el.style.transition='transform 0.08s ease';el.style.transform='translateX(6px)';setTimeout(()=>el.style.transform='translateX(-5px)',80);setTimeout(()=>el.style.transform='translateX(4px)',160);setTimeout(()=>el.style.transform='translateX(0)',240);setTimeout(()=>el.style.transition='',300);}
-function resetRepartition(){document.getElementById('stitches').value='';document.getElementById('increases').value='';document.getElementById('results').classList.add('hidden');doneSteps=0;totalSteps=0;lastSteps=[];}
+function resetRepartition() {
+  document.getElementById('stitches').value='';
+  document.getElementById('increases').value='';
+  document.getElementById('results').classList.add('hidden');
+  doneSteps=0; totalSteps=0; lastSteps=[];
+  saveRang(); // ← persiste le reset dans le localStorage
+}
 function updateProgress(){const pct=totalSteps>0?(doneSteps/totalSteps)*100:0;document.getElementById('bar').style.width=pct+'%';document.getElementById('prog-done').textContent=doneSteps;document.getElementById('prog-total').textContent=totalSteps;document.getElementById('complete-msg').classList.toggle('hidden',doneSteps<totalSteps||totalSteps===0);}
 function resetSteps(){document.querySelectorAll('.step').forEach(e=>e.classList.remove('done','locked','active-next'));doneSteps=0;highlightNext();updateProgress();saveRang();}
 function shakeInput(){document.querySelectorAll('#page-rangs input').forEach(i=>{i.style.borderColor='rgba(239,170,196,0.6)';setTimeout(()=>i.style.borderColor='',800);});}
