@@ -2,11 +2,11 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-  <meta name="theme-color" content="#FFC4D1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Tricot">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧶</text></svg>">
+<meta name="theme-color" content="#FFC4D1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Tricot">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧶</text></svg>">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tricot · al4skaa</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,7 +23,7 @@
     --surface:     rgba(255,255,255,0.70);
     --surface-2:   rgba(255,255,255,0.50);
     --surface-3:   rgba(239,170,196,0.15);
-    --text:        #9a7888;
+    --text:        #3A2830;
     --text-soft:   #6B4858;
     --muted:       #9A7888;
     --done:        #C4A8B0;
@@ -37,125 +37,100 @@
     background: linear-gradient(150deg, #FFE8E1 0%, #FFC4D1 45%, #EFAAC4 80%, #FFE8E1 100%);
     background-attachment: fixed;
     color: var(--text); min-height: 100vh;
-    padding: 0 0 30px; max-width: 520px; margin: 0 auto;
+    padding: 0 0 40px; max-width: 520px; margin: 0 auto;
   }
+
   .page { display: none; padding: 20px 16px; }
   .page.active { display: block; animation: fadeUp 0.25s ease both; }
 
-  /* ── HEADER ── */
-  header { padding: 44px 0 22px; text-align: center; }
-  .logo {
-    width: 62px; height: 62px; background: rgba(255,255,255,0.75);
-    border: 1.5px solid var(--border-soft); border-radius: 20px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.8rem; margin: 0 auto 14px;
-    box-shadow: 0 4px 18px rgba(239,170,196,0.25);
-  }
-  header h1 { font-family: 'Funnel Display', sans-serif; font-size: 2.3rem; font-weight: 700; color: var(--text); letter-spacing: -0.5px; line-height: 1; }
+  header { padding: 52px 0 28px; text-align: center; }
+  .logo { width: 68px; height: 68px; background: rgba(255,255,255,0.75); border: 1.5px solid var(--border-soft); border-radius: 22px; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 16px; box-shadow: 0 4px 18px rgba(239,170,196,0.25); }
+  header h1 { font-family: 'Funnel Display', sans-serif; font-size: 2.4rem; font-weight: 700; color: var(--text); letter-spacing: -0.5px; line-height: 1; }
   .header-dot { color: var(--accent-dim); }
-  header p { font-family: 'Funnel Display', sans-serif; font-weight: 300; color: var(--muted); font-size: 0.92rem; margin-top: 6px; }
-  .page-header { padding: 44px 0 22px; text-align: center; }
-  .page-header h2 { font-family: 'Funnel Display', sans-serif; font-size: 2rem; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
-  .page-header p { font-family: 'Funnel Display', sans-serif; font-weight: 300; color: var(--muted); font-size: 0.9rem; margin-top: 6px; }
-  .back-btn {
-    display: inline-flex; align-items: center; gap: 7px;
-    font-family: 'Funnel Display', sans-serif; font-size: 0.82rem; font-weight: 600;
-    color: var(--muted); background: var(--surface); border: 1.5px solid var(--border);
-    border-radius: 10px; padding: 6px 14px; cursor: pointer; transition: all 0.2s; margin-bottom: 18px;
-  }
+  header p { font-family: 'Funnel Display', sans-serif; font-weight: 300; color: var(--muted); font-size: 0.92rem; margin-top: 7px; }
+
+  .page-header { padding: 44px 0 8px; }
+  .page-header-inner { display: flex; align-items: center; gap: 14px; }
+  .page-header-icon { width: 46px; height: 46px; border-radius: 14px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.6); border: 1.5px solid var(--border-soft); box-shadow: 0 2px 8px rgba(239,170,196,0.15); font-size: 1.1rem; color: var(--accent-dim); }
+  .page-header h2 { font-family: 'Funnel Display', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
+  .page-header p { font-family: 'Funnel Display', sans-serif; font-weight: 300; color: var(--muted); font-size: 0.82rem; margin-top: 3px; }
+
+  .back-btn { display: inline-flex; align-items: center; gap: 7px; font-family: 'Funnel Display', sans-serif; font-size: 0.8rem; font-weight: 600; color: var(--muted); background: var(--surface); border: 1.5px solid var(--border); border-radius: 10px; padding: 6px 13px; cursor: pointer; transition: all 0.2s; margin: 14px 0 20px; }
   .back-btn:hover { color: var(--accent-dim); border-color: var(--border-soft); }
 
-  /* ── CTA PROJET ── */
-  .cta-projet {
-    background: var(--surface); border: 1.5px solid var(--border-soft);
-    border-radius: 14px; padding: 13px 18px; margin-bottom: 14px;
-    display: flex; align-items: center; justify-content: space-between; gap: 12px;
-    cursor: pointer; backdrop-filter: blur(8px);
-    transition: box-shadow 0.2s, border-color 0.2s;
-    box-shadow: 0 2px 12px rgba(239,170,196,0.12);
-  }
-  .cta-projet:hover { border-color: var(--accent-dim); box-shadow: 0 4px 18px rgba(239,170,196,0.25); }
-  
-  .cta-projet-text {
-  display: flex; align-items: center; gap: 9px;
-  font-family: 'Funnel Display', sans-serif;
-  font-size: 0.72rem; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 0.1em;
-  color: var(--muted);
-}
-  .cta-projet-arrow {
-    width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0;
-    background: linear-gradient(135deg, var(--blush-pop), var(--pastel-pink));
-    display: flex; align-items: center; justify-content: center;
-    color: #fff; font-size: 0.9rem; box-shadow: 0 2px 8px rgba(239,170,196,0.35);
-  }
+  /* HOME */
+  .home-grid { display: flex; flex-direction: column; gap: 12px; margin-top: 4px; }
+  .home-card { background: var(--surface); border: 1.5px solid var(--border); border-radius: 20px; padding: 20px 22px; display: flex; align-items: center; gap: 16px; cursor: pointer; backdrop-filter: blur(8px); transition: border-color 0.22s, box-shadow 0.22s, transform 0.15s; box-shadow: 0 4px 20px rgba(239,170,196,0.1); }
+  .home-card:hover { border-color: var(--border-soft); box-shadow: 0 6px 28px rgba(239,170,196,0.22); transform: translateY(-1px); }
+  .home-card:active { transform: scale(0.98); }
+  .home-card-icon { width: 46px; height: 46px; border-radius: 14px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.6); border: 1.5px solid var(--border-soft); box-shadow: 0 2px 8px rgba(239,170,196,0.15); font-size: 1.1rem; color: var(--accent-dim); }
+  .home-card-body { flex: 1; min-width: 0; }
+  .home-card-title { font-family: 'Funnel Display', sans-serif; font-size: 1rem; font-weight: 700; color: var(--text); }
+  .home-card-desc { font-family: 'Funnel Display', sans-serif; font-size: 0.78rem; font-weight: 400; color: var(--muted); margin-top: 3px; }
+  .home-card-arrow { color: var(--done); font-size: 0.85rem; flex-shrink: 0; transition: transform 0.2s, color 0.2s; }
+  .home-card:hover .home-card-arrow { color: var(--accent-dim); transform: translateX(3px); }
+  .home-badge { background: linear-gradient(135deg, var(--blush-pop), var(--pastel-pink)); color: #fff; font-family: 'Funnel Display', sans-serif; font-size: 0.7rem; font-weight: 700; border-radius: 20px; padding: 2px 9px; margin-left: 8px; vertical-align: middle; box-shadow: 0 1px 6px rgba(239,170,196,0.4); }
 
-  /* ── CARDS ── */
+  /* CARDS */
   .card { background: var(--surface); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 22px; margin-bottom: 12px; box-shadow: 0 4px 24px rgba(239,170,196,0.12); backdrop-filter: blur(8px); }
   .card-accent { border-color: var(--border-soft); }
-  .section-label {
-    font-family: 'Funnel Display', sans-serif; font-size: 0.72rem; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 16px;
-    display: flex; align-items: center; gap: 9px;
-  }
+  .section-label { font-family: 'Funnel Display', sans-serif; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 16px; display: flex; align-items: center; gap: 9px; }
   .dot-label { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; background: var(--accent-dim); box-shadow: 0 0 6px rgba(200,112,154,0.5); }
   .dot-peach { background: #C88050; box-shadow: 0 0 6px rgba(200,128,80,0.5); }
   .dot-green { background: var(--green); box-shadow: 0 0 6px rgba(106,154,106,0.5); }
 
-  /* ── INPUTS ── */
+  /* INPUTS */
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
   .form-group { display: flex; flex-direction: column; gap: 6px; }
   .form-group label { font-family: 'Funnel Display', sans-serif; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
-  input[type=number], input[type=text], input[type=url] {
-    padding: 13px 14px; background: var(--surface-2); border: 1.5px solid var(--border);
-    border-radius: 13px; color: var(--text); font-size: 1rem; font-weight: 500;
-    font-family: 'DM Sans', inherit; outline: none;
-    transition: border-color 0.25s, box-shadow 0.25s; -moz-appearance: textfield; width: 100%;
-  }
+  input[type=number], input[type=text], input[type=url] { padding: 13px 14px; background: var(--surface-2); border: 1.5px solid var(--border); border-radius: 13px; color: var(--text); font-size: 1rem; font-weight: 500; font-family: 'DM Sans', inherit; outline: none; transition: border-color 0.25s, box-shadow 0.25s; -moz-appearance: textfield; width: 100%; }
   input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; }
   input:focus { border-color: var(--accent-dim); box-shadow: 0 0 0 3px rgba(239,170,196,0.2); }
   input::placeholder { color: var(--done); }
 
-  /* ── TOGGLE ── */
+  /* TEXTAREA NOTES */
+  textarea {
+    padding: 13px 14px; background: var(--surface-2); border: 1.5px solid var(--border);
+    border-radius: 13px; color: var(--text); font-size: 0.9rem; font-weight: 400;
+    font-family: 'DM Sans', inherit; outline: none; width: 100%; resize: none;
+    transition: border-color 0.25s, box-shadow 0.25s; line-height: 1.6;
+    min-height: 90px;
+  }
+  textarea:focus { border-color: var(--accent-dim); box-shadow: 0 0 0 3px rgba(239,170,196,0.2); }
+  textarea::placeholder { color: var(--done); }
+
+  /* Bloc notes affiché dans le détail projet */
+  .notes-display {
+    background: var(--surface-2); border: 1.5px solid var(--border);
+    border-left: 3px solid var(--accent-dim); border-radius: 13px;
+    padding: 11px 14px; margin-bottom: 14px;
+    font-size: 0.84rem; color: var(--text-soft); line-height: 1.65;
+    white-space: pre-wrap; word-break: break-word;
+  }
+  .notes-display.empty { color: var(--done); font-style: italic; }
+
+  /* TOGGLE */
   .toggle-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 16px; }
   .toggle-btn { padding: 11px 10px; border: 1.5px solid var(--border); border-radius: 13px; background: var(--surface-2); color: var(--muted); font-family: 'Funnel Display', sans-serif; font-size: 0.92rem; font-weight: 600; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px; }
   .toggle-btn:hover { border-color: var(--border-soft); color: var(--text-soft); }
   .toggle-btn.active-augm { background: rgba(239,170,196,0.2); border-color: var(--accent-dim); color: var(--accent-dim); }
   .toggle-btn.active-dim  { background: rgba(200,128,80,0.12); border-color: #C88050; color: #A06030; }
 
-  /* ── BTNS ── */
+  /* BTNS */
   .btn-cta { width: 100%; padding: 14px; background: linear-gradient(135deg, var(--blush-pop), var(--pastel-pink)); color: #fff; border: none; border-radius: 14px; font-family: 'Funnel Display', sans-serif; font-size: 1rem; font-weight: 700; cursor: pointer; transition: opacity 0.2s, transform 0.15s; box-shadow: 0 4px 18px rgba(239,170,196,0.4); }
   .btn-cta:hover { opacity: 0.88; }
   .btn-cta:active { transform: scale(0.98); }
-  .btn-reset { width: 100%; padding: 12px; margin-top: 10px; background: transparent; border: 1.5px solid var(--border-soft); border-radius: 13px; color: var(--muted); font-family: 'Funnel Display', sans-serif; font-size: 0.88rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
-  .btn-reset:hover { border-color: var(--accent-dim); color: var(--accent-dim); }
+  .btn-secondary { width: 100%; padding: 12px; margin-top: 8px; background: transparent; border: 1.5px solid var(--border-soft); border-radius: 13px; color: var(--muted); font-family: 'Funnel Display', sans-serif; font-size: 0.88rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+  .btn-secondary:hover { border-color: var(--accent-dim); color: var(--accent-dim); }
   .btn-icon { background: none; border: none; color: var(--done); font-size: 0.9rem; cursor: pointer; padding: 5px; border-radius: 8px; transition: all 0.2s; }
-  .btn-icon:hover { color: #D47080; background: rgba(212,112,128,0.1); }
+  .btn-icon:hover { color: #D47080; background: rgba(212,112,128,0.08); }
   .btn-icon.edit:hover { color: var(--accent-dim); background: rgba(239,170,196,0.15); }
-
-  /* ── RANG CARD ── */
-  .rang-card { background: var(--surface); border: 1.5px solid var(--border-soft); border-radius: var(--radius); padding: 22px; margin-bottom: 12px; box-shadow: 0 4px 24px rgba(239,170,196,0.12); backdrop-filter: blur(8px); }
-  .rang-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
-  .rang-title { font-family: 'Funnel Display', sans-serif; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); display: flex; align-items: center; gap: 9px; }
   .rang-reset-btn { font-family: 'Funnel Display', sans-serif; font-size: 0.78rem; font-weight: 600; color: var(--muted); background: var(--surface-2); border: 1.5px solid var(--border); border-radius: 9px; padding: 5px 13px; cursor: pointer; transition: all 0.2s; }
   .rang-reset-btn:hover { border-color: var(--border-soft); color: var(--accent-dim); }
-  .pelote-counter { width: 150px; margin: 0 auto 24px; }
-  .pelote-bg { width: 150px; height: 150px; border-radius: 50%; background: linear-gradient(145deg, #EFAAC4 0%, #FFC4D1 60%, #FFE8E1 100%); border: 2px solid rgba(255,255,255,0.85); box-shadow: 0 8px 32px rgba(239,170,196,0.35), inset 0 2px 8px rgba(255,255,255,0.6); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; }
-  .rang-number { font-family: 'Funnel Display', sans-serif; font-size: 3.4rem; font-weight: 800; line-height: 1; color: #fff; text-shadow: 0 2px 8px rgba(180,80,120,0.2); transition: transform 0.15s cubic-bezier(0.34,1.56,0.64,1); }
-  .rang-number.bump { transform: scale(1.22); }
-  .rang-label-small { font-family: 'Funnel Display', sans-serif; font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.16em; color: rgba(255,255,255,0.75); }
-  .rang-controls { display: flex; align-items: center; justify-content: center; gap: 16px; }
-  .rang-btn { width: 54px; height: 54px; border-radius: 50%; border: none; font-size: 1.6rem; cursor: pointer; transition: transform 0.15s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s; display: flex; align-items: center; justify-content: center; }
-  .rang-btn-minus { background: var(--surface-2); color: var(--muted); border: 1.5px solid var(--border-soft); }
-  .rang-btn-minus:hover { color: var(--accent-dim); border-color: var(--accent-dim); }
-  .rang-btn-plus { background: linear-gradient(135deg, var(--blush-pop), var(--pastel-pink)); color: #fff; box-shadow: 0 4px 16px rgba(239,170,196,0.45); font-size: 1.9rem; }
-  .rang-btn-plus:hover { box-shadow: 0 6px 22px rgba(239,170,196,0.6); }
-  .rang-btn:active { transform: scale(0.88); }
 
-  /* ── STATS ── */
+  /* STATS */
   .stats-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-bottom: 14px; }
-  .stat-chip { background: var(--surface-2); border: 1.5px solid var(--border); border-radius: 14px; padding: 13px 10px; text-align: center; transition: border-color 0.2s; }
-  .stat-chip:hover { border-color: var(--border-soft); }
+  .stat-chip { background: var(--surface-2); border: 1.5px solid var(--border); border-radius: 14px; padding: 13px 10px; text-align: center; }
   .stat-val { font-family: 'Funnel Display', sans-serif; font-size: 1.85rem; font-weight: 700; color: var(--text); }
   .stat-lbl { font-family: 'Funnel Display', sans-serif; font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); margin-top: 3px; }
   .divider { height: 1px; background: var(--border); margin: 4px 0 14px; }
@@ -169,6 +144,8 @@
   .progress-meta span { font-family: 'Funnel Display', sans-serif; font-size: 0.78rem; font-weight: 600; color: var(--muted); }
   .bar-bg { height: 6px; background: var(--surface-3); border-radius: 10px; overflow: hidden; }
   .bar-fill { height: 100%; background: linear-gradient(90deg, var(--blush-pop), var(--pastel-pink)); border-radius: 10px; transition: width 0.45s cubic-bezier(0.34,1.56,0.64,1); }
+
+  /* STEPS */
   .steps-list { display: flex; flex-direction: column; gap: 7px; }
   .step { display: grid; grid-template-columns: 38px 1fr auto; align-items: center; gap: 12px; padding: 13px 14px; background: var(--surface-2); border: 1.5px solid var(--border); border-radius: 13px; cursor: pointer; transition: border-color 0.2s, background 0.2s, opacity 0.2s; user-select: none; }
   .step:hover { border-color: var(--border-soft); }
@@ -193,104 +170,54 @@
   .complete-card p { font-family: 'Funnel Display', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--green); margin-top: 8px; }
   .complete-card small { font-family: 'Funnel Display', sans-serif; font-size: 0.8rem; color: var(--muted); display: block; margin-top: 4px; }
 
-  /* ════════════════════════
-     PAGE 2 — PROJETS
-  ════════════════════════ */
-  .projects-grid { display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px; }
+  /* NOUVEAU PROJET */
+  .field-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; }
+  .field-group label { font-family: 'Funnel Display', sans-serif; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
 
-  /* Project card — deux états : résumé / détail expanded */
-  .project-card {
-    background: var(--surface); border: 1.5px solid var(--border);
-    border-radius: 16px; overflow: hidden;
-    box-shadow: 0 4px 20px rgba(239,170,196,0.1); backdrop-filter: blur(8px);
-    transition: border-color 0.2s, box-shadow 0.2s;
-  }
+  /* PROJETS EN COURS */
+  .projects-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px; }
+  .project-card { background: var(--surface); border: 1.5px solid var(--border); border-radius: 16px; overflow: hidden; backdrop-filter: blur(8px); transition: border-color 0.2s, box-shadow 0.2s; }
   .project-card:hover { border-color: var(--border-soft); }
-  .project-card.active-project { border-color: var(--accent-dim); box-shadow: 0 0 0 2px rgba(239,170,196,0.2); }
-
-  /* Ligne principale cliquable */
-  .project-summary {
-    display: flex; align-items: center; gap: 12px;
-    padding: 16px 18px; cursor: pointer;
-  }
+  .project-summary { display: flex; align-items: center; gap: 12px; padding: 16px 18px; cursor: pointer; }
   .project-emoji { font-size: 1.5rem; flex-shrink: 0; }
   .project-info { flex: 1; min-width: 0; }
-  .project-name { font-family: 'Funnel Display', sans-serif; font-size: 0.98rem; font-weight: 700; color: var(--text); }
+  .project-name-text { font-family: 'Funnel Display', sans-serif; font-size: 0.98rem; font-weight: 700; color: var(--text); }
   .project-meta { font-family: 'Funnel Display', sans-serif; font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
   .project-actions { display: flex; gap: 4px; align-items: center; flex-shrink: 0; }
   .project-chevron { font-size: 0.8rem; color: var(--muted); transition: transform 0.25s; margin-left: 2px; }
   .project-card.expanded .project-chevron { transform: rotate(180deg); }
+  .project-expanded { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1); border-top: 0px solid var(--border); }
+  .project-card.expanded .project-expanded { max-height: 900px; border-top-width: 1px; }
+  .project-expanded-inner { padding: 16px 18px 18px; }
 
-  /* Détail expandable */
-  .project-detail {
-    max-height: 0; overflow: hidden;
-    transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), padding 0.3s;
-    border-top: 0px solid var(--border);
-  }
-  .project-card.expanded .project-detail {
-    max-height: 800px;
-    border-top-width: 1px;
-  }
-  .project-detail-inner { padding: 16px 18px 18px; }
-
-  /* Mini barre de progression dans le détail */
-  .detail-progress { margin-bottom: 14px; }
-  .detail-progress-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
-  .detail-progress-top span { font-family: 'Funnel Display', sans-serif; font-size: 0.78rem; font-weight: 600; color: var(--muted); }
-  .detail-progress-top strong { font-family: 'Funnel Display', sans-serif; font-size: 0.82rem; font-weight: 700; color: var(--accent-dim); }
-
-  /* Patron badges dans le détail */
   .patron-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
-  .patron-link {
-    display: inline-flex; align-items: center; gap: 6px;
-    font-family: 'Funnel Display', sans-serif; font-size: 0.8rem; font-weight: 600;
-    color: var(--accent-dim); background: rgba(239,170,196,0.12); border: 1.5px solid rgba(239,170,196,0.3);
-    border-radius: 20px; padding: 6px 14px; text-decoration: none; transition: background 0.2s;
-  }
+  .patron-link { display: inline-flex; align-items: center; gap: 6px; font-family: 'Funnel Display', sans-serif; font-size: 0.8rem; font-weight: 600; color: var(--accent-dim); background: rgba(239,170,196,0.12); border: 1.5px solid rgba(239,170,196,0.3); border-radius: 20px; padding: 6px 14px; text-decoration: none; transition: background 0.2s; }
   .patron-link:hover { background: rgba(239,170,196,0.22); }
-  .patron-pdf-badge {
-    display: inline-flex; align-items: center; gap: 6px;
-    font-family: 'Funnel Display', sans-serif; font-size: 0.8rem; font-weight: 600;
-    color: #C88050; background: rgba(200,128,80,0.1); border: 1.5px solid rgba(200,128,80,0.3);
-    border-radius: 20px; padding: 6px 14px;
-  }
 
-  /* Boutons d'action dans le détail */
-  .detail-actions { display: flex; gap: 8px; }
-  .detail-btn {
-    flex: 1; padding: 10px; border-radius: 11px; border: 1.5px solid var(--border-soft);
-    background: var(--surface-2); color: var(--muted);
-    font-family: 'Funnel Display', sans-serif; font-size: 0.82rem; font-weight: 600;
-    cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px;
-  }
-  .detail-btn:hover { border-color: var(--accent-dim); color: var(--accent-dim); }
-  .detail-btn.danger:hover { border-color: #D47080; color: #D47080; background: rgba(212,112,128,0.08); }
+  .mini-progress { margin-bottom: 14px; }
+  .mini-progress-top { display: flex; justify-content: space-between; margin-bottom: 6px; }
+  .mini-progress-top span { font-family: 'Funnel Display', sans-serif; font-size: 0.78rem; font-weight: 600; color: var(--muted); }
+  .mini-progress-top strong { font-family: 'Funnel Display', sans-serif; font-size: 0.8rem; font-weight: 700; color: var(--accent-dim); }
 
-  /* ── FORMULAIRE NOUVEAU PROJET ── */
-  .new-project-card { background: var(--surface); border: 1.5px solid var(--border-soft); border-radius: var(--radius); padding: 20px; margin-bottom: 12px; backdrop-filter: blur(8px); }
-  .field-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; }
-  .field-group label { font-family: 'Funnel Display', sans-serif; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
-  .file-upload-zone { border: 2px dashed rgba(239,170,196,0.4); border-radius: 13px; padding: 14px; text-align: center; cursor: pointer; background: var(--surface-2); transition: border-color 0.2s, background 0.2s; position: relative; }
-  .file-upload-zone:hover { border-color: var(--accent-dim); background: rgba(239,170,196,0.08); }
-  .file-upload-zone input[type=file] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
-  .file-upload-zone i { font-size: 1.3rem; color: var(--accent-dim); display: block; margin-bottom: 5px; }
-  .file-upload-zone span { font-family: 'Funnel Display', sans-serif; font-size: 0.8rem; font-weight: 600; color: var(--muted); }
-  .file-upload-zone .file-name { color: var(--accent-dim); font-size: 0.78rem; margin-top: 3px; display: block; }
+  /* COMPTEUR DE RANGS */
+  .rang-counter-card { background: var(--surface-2); border: 1.5px solid var(--border); border-radius: 14px; padding: 18px; margin-bottom: 4px; }
+  .rang-counter-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+  .rang-counter-label { font-family: 'Funnel Display', sans-serif; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+  .rang-circle { width: 130px; height: 130px; margin: 0 auto 18px; border-radius: 50%; background: linear-gradient(145deg, #EFAAC4, #FFC4D1, #FFE8E1); border: 2px solid rgba(255,255,255,0.85); box-shadow: 0 6px 24px rgba(239,170,196,0.3), inset 0 2px 8px rgba(255,255,255,0.6); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; }
+  .rang-circle-num { font-family: 'Funnel Display', sans-serif; font-size: 3rem; font-weight: 800; line-height: 1; color: #fff; text-shadow: 0 2px 8px rgba(180,80,120,0.2); transition: transform 0.15s cubic-bezier(0.34,1.56,0.64,1); }
+  .rang-circle-num.bump { transform: scale(1.22); }
+  .rang-circle-lbl { font-family: 'Funnel Display', sans-serif; font-size: 0.62rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.16em; color: rgba(255,255,255,0.75); }
+  .rang-btns { display: flex; align-items: center; justify-content: center; gap: 14px; }
+  .rang-btn { width: 52px; height: 52px; border-radius: 50%; border: none; font-size: 1.6rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: transform 0.15s cubic-bezier(0.34,1.56,0.64,1); }
+  .rang-btn-minus { background: var(--surface-2); color: var(--muted); border: 1.5px solid var(--border-soft); }
+  .rang-btn-minus:hover { color: var(--accent-dim); border-color: var(--accent-dim); }
+  .rang-btn-plus { background: linear-gradient(135deg, var(--blush-pop), var(--pastel-pink)); color: #fff; box-shadow: 0 4px 16px rgba(239,170,196,0.45); font-size: 1.9rem; }
+  .rang-btn:active { transform: scale(0.88); }
 
-  /* ── MODAL ÉDITION ── */
-  .modal-overlay {
-    position: fixed; inset: 0; z-index: 200;
-    background: rgba(58,40,48,0.45); backdrop-filter: blur(6px);
-    display: flex; align-items: flex-end; justify-content: center;
-    opacity: 0; pointer-events: none; transition: opacity 0.25s;
-  }
+  /* MODAL */
+  .modal-overlay { position: fixed; inset: 0; z-index: 200; background: rgba(58,40,48,0.45); backdrop-filter: blur(6px); display: flex; align-items: flex-end; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.25s; }
   .modal-overlay.open { opacity: 1; pointer-events: all; }
-  .modal-sheet {
-    background: #FFF4F7; border-radius: 24px 24px 0 0;
-    padding: 28px 22px 40px; width: 100%; max-width: 520px;
-    transform: translateY(40px); transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
-    box-shadow: 0 -8px 40px rgba(239,170,196,0.25);
-  }
+  .modal-sheet { background: #FFF4F7; border-radius: 24px 24px 0 0; padding: 28px 22px 40px; width: 100%; max-width: 520px; transform: translateY(40px); transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1); box-shadow: 0 -8px 40px rgba(239,170,196,0.25); overflow-y: auto; max-height: 92vh; }
   .modal-overlay.open .modal-sheet { transform: translateY(0); }
   .modal-handle { width: 36px; height: 4px; background: rgba(239,170,196,0.5); border-radius: 2px; margin: 0 auto 20px; }
   .modal-title { font-family: 'Funnel Display', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--text); margin-bottom: 18px; }
@@ -302,96 +229,119 @@
   .modal-btn-cancel { padding: 13px 20px; background: transparent; border: 1.5px solid var(--border-soft); border-radius: 13px; color: var(--muted); font-family: 'Funnel Display', sans-serif; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
   .modal-btn-cancel:hover { border-color: var(--accent-dim); color: var(--accent-dim); }
 
-  /* ── MONTAGE ── */
-  .montage-section { background: var(--surface); border: 1.5px solid var(--border-soft); border-radius: var(--radius); padding: 22px; margin-bottom: 12px; backdrop-filter: blur(8px); }
-  .montage-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
-  .montage-title { font-family: 'Funnel Display', sans-serif; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); display: flex; align-items: center; gap: 9px; }
-  .montage-progress-circle { width: 160px; height: 160px; margin: 0 auto 22px; position: relative; display: flex; align-items: center; justify-content: center; }
-  .montage-progress-circle svg { position: absolute; inset: 0; transform: rotate(-90deg); }
-  .montage-circle-bg { fill: none; stroke: rgba(239,170,196,0.2); stroke-width: 8; }
-  .montage-circle-fill { fill: none; stroke: url(#pink-grad); stroke-width: 8; stroke-linecap: round; stroke-dasharray: 440; stroke-dashoffset: 440; transition: stroke-dashoffset 0.5s cubic-bezier(0.34,1.56,0.64,1); }
-  .montage-inner { text-align: center; z-index: 1; }
-  .montage-count { font-family: 'Funnel Display', sans-serif; font-size: 2.6rem; font-weight: 800; color: var(--text); line-height: 1; transition: transform 0.15s cubic-bezier(0.34,1.56,0.64,1); }
-  .montage-count.bump { transform: scale(1.18); }
-  .montage-total-label { font-family: 'Funnel Display', sans-serif; font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin-top: 2px; }
-  .montage-pct { font-family: 'Funnel Display', sans-serif; font-size: 0.88rem; font-weight: 700; color: var(--accent-dim); margin-top: 1px; }
-  .montage-controls { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; }
-  .m-btn { padding: 11px 18px; border-radius: 12px; border: 1.5px solid var(--border-soft); font-family: 'Funnel Display', sans-serif; font-size: 0.9rem; font-weight: 700; cursor: pointer; transition: all 0.2s; }
-  .m-btn-plus { background: linear-gradient(135deg, var(--blush-pop), var(--pastel-pink)); color: #fff; border-color: transparent; box-shadow: 0 3px 12px rgba(239,170,196,0.4); font-size: 1rem; padding: 12px 26px; }
-  .m-btn-plus:hover { box-shadow: 0 5px 18px rgba(239,170,196,0.55); }
-  .m-btn-minus { background: var(--surface-2); color: var(--muted); }
-  .m-btn-minus:hover { color: var(--accent-dim); border-color: var(--accent-dim); }
-  .m-btn-ten { background: rgba(239,170,196,0.12); color: var(--accent-dim); border-color: rgba(239,170,196,0.35); font-size: 0.82rem; padding: 10px 14px; }
-  .m-btn-ten:hover { background: rgba(239,170,196,0.22); }
-  .m-btn:active { transform: scale(0.93); }
-  .montage-done-banner { background: linear-gradient(135deg,rgba(106,154,106,0.15),rgba(144,200,144,0.1)); border: 1.5px solid rgba(106,154,106,0.3); border-radius: 13px; padding: 14px; text-align: center; margin-top: 14px; display: none; }
-  .montage-done-banner.show { display: block; }
-  .montage-done-banner p { font-family: 'Funnel Display', sans-serif; font-size: 1rem; font-weight: 700; color: var(--green); }
-  .montage-done-banner small { font-family: 'Funnel Display', sans-serif; font-size: 0.8rem; color: var(--muted); }
-
-  /* ── CREDITS ── */
-  .credits { text-align: center; padding: 20px 0 8px; display: flex; flex-direction: column; align-items: center; gap: 7px; }
+  /* CREDITS */
+  .credits { text-align: center; padding: 24px 0 8px; display: flex; flex-direction: column; align-items: center; gap: 7px; }
   .credits-text { font-family: 'Funnel Display', sans-serif; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
   .credits-link { display: inline-flex; align-items: center; gap: 8px; font-family: 'Funnel Display', sans-serif; font-size: 0.9rem; font-weight: 600; color: var(--accent-dim); text-decoration: none; background: rgba(239,170,196,0.15); border: 1.5px solid rgba(239,170,196,0.3); border-radius: 30px; padding: 7px 18px; transition: all 0.2s; }
   .credits-link:hover { background: rgba(239,170,196,0.25); border-color: var(--accent-dim); }
-  .credits-link i { font-size: 1rem; }
 
   .hidden { display: none !important; }
   @keyframes fadeUp { from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);} }
-  #results { animation: fadeUp 0.3s ease both; }
   ::-webkit-scrollbar { width: 4px; }
   ::-webkit-scrollbar-thumb { background: rgba(239,170,196,0.3); border-radius: 4px; }
 </style>
 </head>
 <body>
 
-<!-- PAGE 1 — RANGS -->
-<div class="page active" id="page-rangs">
+<!-- HOME -->
+<div class="page active" id="page-home">
   <header>
     <div class="logo">🧶</div>
     <h1>tricot <span class="header-dot">♡</span></h1>
-    <p>compteur de rangs & répartition des mailles</p>
+    <p>by alaskaa.tricot</p>
   </header>
-
-<div class="cta-projet" onclick="switchPage('projets')">
-  <div class="cta-projet-text">
-    <div class="dot-label"></div>
-    commencer un nouveau projet
+  <div class="home-grid">
+    <div class="home-card" onclick="switchPage('nouveau')">
+      <div class="home-card-icon"><i class="fa-solid fa-plus"></i></div>
+      <div class="home-card-body">
+        <div class="home-card-title">Commencer un nouveau projet</div>
+        <div class="home-card-desc">Créer, nommer, monter les mailles</div>
+      </div>
+      <i class="fa-solid fa-chevron-right home-card-arrow"></i>
+    </div>
+    <div class="home-card" onclick="switchPage('projets')">
+      <div class="home-card-icon"><i class="fa-solid fa-scissors"></i></div>
+      <div class="home-card-body">
+        <div class="home-card-title">Mes projets en cours <span class="home-badge" id="badge-count">0</span></div>
+        <div class="home-card-desc">Compteur de rangs par projet</div>
+      </div>
+      <i class="fa-solid fa-chevron-right home-card-arrow"></i>
+    </div>
+    <div class="home-card" onclick="switchPage('repartition')">
+      <div class="home-card-icon"><i class="fa-solid fa-sliders"></i></div>
+      <div class="home-card-body">
+        <div class="home-card-title">Répartition des rangs</div>
+        <div class="home-card-desc">Calculer augmentations & diminutions</div>
+      </div>
+      <i class="fa-solid fa-chevron-right home-card-arrow"></i>
+    </div>
   </div>
-  <div class="cta-projet-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+  <div class="credits">
+    <div class="credits-text">fait avec 🩷 par</div>
+    <a class="credits-link" href="https://www.instagram.com/alaskaa.tricot/" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i> alaskaa.tricot</a>
+  </div>
 </div>
 
-  <div class="rang-card">
-    <div class="rang-header">
-      <div class="rang-title"><div class="dot-label"></div>compteur de rangs</div>
-      <button class="rang-reset-btn" onclick="resetRang()">↺ reset</button>
-    </div>
-    <div class="pelote-counter">
-      <div class="pelote-bg">
-        <div class="rang-number" id="rang-num">0</div>
-        <div class="rang-label-small">rang</div>
-      </div>
-    </div>
-    <div class="rang-controls">
-      <button class="rang-btn rang-btn-minus" onclick="changeRang(-1)">−</button>
-      <button class="rang-btn rang-btn-plus" onclick="changeRang(1)">+</button>
+
+<!-- NOUVEAU PROJET -->
+<div class="page" id="page-nouveau">
+  <div class="page-header">
+    <button class="back-btn" onclick="switchPage('home')"><i class="fa-solid fa-arrow-left"></i> accueil</button>
+    <div class="page-header-inner">
+      <div class="page-header-icon"><i class="fa-solid fa-plus"></i></div>
+      <div><h2>Nouveau projet</h2><p>Crée ton projet et monte tes mailles</p></div>
     </div>
   </div>
+  <div class="card card-accent" style="margin-top:18px;">
+    <div class="section-label"><div class="dot-label"></div>informations</div>
+    <div class="field-group"><label>nom du projet</label><input type="text" id="new-name" placeholder="ex. Pull hivernal…" maxlength="40"></div>
+    <div class="field-group"><label>mailles à monter</label><input type="number" id="new-mailles" placeholder="ex. 120" min="1" inputmode="numeric"></div>
+    <div class="field-group"><label>lien patron (URL)</label><input type="url" id="new-url" placeholder="https://ravelry.com/…"></div>
+    <div class="field-group" style="margin-bottom:18px;">
+      <label>notes</label>
+      <textarea id="new-notes" placeholder="laine utilisée, taille d'aiguilles, remarques…" rows="3"></textarea>
+    </div>
+    <button class="btn-cta" onclick="createProject()">✨ créer le projet</button>
+  </div>
+</div>
 
-  <div class="card card-accent">
-    <div class="section-label"><div class="dot-label"></div>répartition augm. & dim.</div>
+
+<!-- PROJETS EN COURS -->
+<div class="page" id="page-projets">
+  <div class="page-header">
+    <button class="back-btn" onclick="switchPage('home')"><i class="fa-solid fa-arrow-left"></i> accueil</button>
+    <div class="page-header-inner">
+      <div class="page-header-icon"><i class="fa-solid fa-scissors"></i></div>
+      <div><h2>Projets en cours</h2><p>Compteur de rangs par projet</p></div>
+    </div>
+  </div>
+  <div style="height:18px;"></div>
+  <div id="projects-list" class="projects-list"></div>
+</div>
+
+
+<!-- RÉPARTITION -->
+<div class="page" id="page-repartition">
+  <div class="page-header">
+    <button class="back-btn" onclick="switchPage('home')"><i class="fa-solid fa-arrow-left"></i> accueil</button>
+    <div class="page-header-inner">
+      <div class="page-header-icon"><i class="fa-solid fa-sliders"></i></div>
+      <div><h2>Répartitions</h2><p>augmentations & diminutions</p></div>
+    </div>
+  </div>
+  <div class="card card-accent" style="margin-top:18px;">
+    <div class="section-label"><div class="dot-label"></div>paramètres</div>
     <div class="form-row">
       <div class="form-group"><label>mailles de départ</label><input type="number" id="stitches" placeholder="ex. 10" min="1" inputmode="numeric"></div>
-      <div class="form-group"><label>nb de modif</label><input type="number" id="increases" placeholder="ex. 5" min="1" inputmode="numeric"></div>
+      <div class="form-group"><label>nbre de modifications</label><input type="number" id="increases" placeholder="ex. 5" min="1" inputmode="numeric"></div>
     </div>
     <div class="toggle-row">
       <button class="toggle-btn active-augm" id="btn-augm" onclick="setType('augm.',this,'augm')">⬆ augmentation</button>
       <button class="toggle-btn" id="btn-dim" onclick="setType('dim.',this,'dim')">⬇ diminution</button>
     </div>
-    <button class="btn-cta" onclick="calculate()">✨ calculer la répartition</button>
-    <button class="btn-reset" onclick="resetRepartition()" style="margin-top:8px">↺ réinitialiser</button>
+    <button class="btn-cta" onclick="calculate()">🧮 Calculer la répartition</button>
+    <button class="btn-secondary" onclick="resetRepartition()">↺ reset</button>
   </div>
-
   <div id="results" class="hidden">
     <div class="card">
       <div class="section-label"><div class="dot-peach dot-label"></div>résumé du rang</div>
@@ -412,10 +362,9 @@
       </div>
       <div class="steps-list" id="steps-list"></div>
       <div id="complete-msg" class="complete-card hidden"><div class="big">🎉</div><p>rang terminé !</p><small>toutes les étapes sont cochées ✨</small></div>
-      <button class="btn-reset" onclick="resetSteps()">↺ recommencer le rang</button>
+      <button class="btn-secondary" onclick="resetSteps()">↺ recommencer le rang</button>
     </div>
   </div>
-
   <div class="credits">
     <div class="credits-text">fait avec 🩷 par</div>
     <a class="credits-link" href="https://www.instagram.com/alaskaa.tricot/" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i> alaskaa.tricot</a>
@@ -423,79 +372,8 @@
 </div>
 
 
-<!-- PAGE 2 — PROJETS -->
-<div class="page" id="page-projets">
-  <div class="page-header">
-    <h2>mes projets 🧵</h2>
-    <p>monte tes mailles, suis ton avancement</p>
-  </div>
-
-  <button class="back-btn" onclick="switchPage('rangs')"><i class="fa-solid fa-arrow-left"></i> retour</button>
-
-  <div class="new-project-card">
-    <div class="section-label"><div class="dot-label"></div>nouveau projet</div>
-    <div class="field-group"><label>nom du projet</label><input type="text" id="new-project-name" placeholder="ex. Pull hivernal…" maxlength="40"></div>
-    <div class="field-group"><label>mailles à monter</label><input type="number" id="new-project-mailles" placeholder="ex. 120" min="1" inputmode="numeric"></div>
-    <div class="field-group"><label>lien patron (URL)</label><input type="url" id="new-project-url" placeholder="https://ravelry.com/…"></div>
-    <div class="field-group" style="margin-bottom:14px;">
-      <label>patron PDF</label>
-      <div class="file-upload-zone">
-        <input type="file" accept=".pdf" id="new-project-pdf" onchange="onPdfChange(this)">
-        <i class="fa-solid fa-file-arrow-up"></i>
-        <span>glisse un PDF ou appuie pour choisir</span>
-        <span class="file-name" id="pdf-filename"></span>
-      </div>
-    </div>
-    <button class="btn-cta" onclick="addProject()">✨ créer le projet</button>
-  </div>
-
-  <div id="projects-grid" class="projects-grid"></div>
-
-  <!-- Compteur de montage du projet actif -->
-  <div id="projet-detail" class="hidden">
-    <div class="montage-section">
-      <div class="montage-header">
-        <div class="montage-title"><div class="dot-green dot-label"></div>montage des mailles</div>
-        <button class="rang-reset-btn" onclick="resetMontage()">↺ reset</button>
-      </div>
-      <div class="montage-progress-circle">
-        <svg viewBox="0 0 160 160" width="160" height="160">
-          <defs>
-            <linearGradient id="pink-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#EFAAC4"/><stop offset="100%" stop-color="#FFC4D1"/>
-            </linearGradient>
-          </defs>
-          <circle class="montage-circle-bg" cx="80" cy="80" r="70"/>
-          <circle class="montage-circle-fill" id="montage-arc" cx="80" cy="80" r="70"/>
-        </svg>
-        <div class="montage-inner">
-          <div class="montage-count" id="montage-count">0</div>
-          <div class="montage-total-label" id="montage-total-label">/ 0 mailles</div>
-          <div class="montage-pct" id="montage-pct">0%</div>
-        </div>
-      </div>
-      <div class="montage-controls">
-        <button class="m-btn m-btn-minus" onclick="changeMontage(-1)">− 1</button>
-        <button class="m-btn m-btn-plus" onclick="changeMontage(1)">+ 1 maille</button>
-        <button class="m-btn m-btn-ten" onclick="changeMontage(10)">+ 10</button>
-        <button class="m-btn m-btn-minus" onclick="changeMontage(-10)">− 10</button>
-      </div>
-      <div class="montage-done-banner" id="montage-done">
-        <p>🎉 montage terminé !</p>
-        <small id="montage-done-text">toutes les mailles sont montées</small>
-      </div>
-    </div>
-  </div>
-
-  <div class="credits" style="padding-top:12px;">
-    <div class="credits-text">fait avec 🩷 par</div>
-    <a class="credits-link" href="https://www.instagram.com/alaskaa.tricot/" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i> alaskaa.tricot</a>
-  </div>
-</div>
-
-
 <!-- MODAL ÉDITION -->
-<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+<div class="modal-overlay" id="modal-overlay">
   <div class="modal-sheet">
     <div class="modal-handle"></div>
     <div class="modal-title">✏️ modifier le projet</div>
@@ -503,13 +381,8 @@
     <div class="modal-field"><label>mailles à monter</label><input type="number" id="edit-mailles" min="1" inputmode="numeric"></div>
     <div class="modal-field"><label>lien patron (URL)</label><input type="url" id="edit-url" placeholder="https://…"></div>
     <div class="modal-field">
-      <label>patron PDF (remplacer)</label>
-      <div class="file-upload-zone">
-        <input type="file" accept=".pdf" id="edit-pdf" onchange="onEditPdfChange(this)">
-        <i class="fa-solid fa-file-arrow-up"></i>
-        <span>glisse un PDF ou appuie</span>
-        <span class="file-name" id="edit-pdf-filename"></span>
-      </div>
+      <label>notes</label>
+      <textarea id="edit-notes" placeholder="laine utilisée, taille d'aiguilles, remarques…" rows="4"></textarea>
     </div>
     <div class="modal-actions">
       <button class="modal-btn-cancel" onclick="closeModal()">annuler</button>
@@ -520,230 +393,288 @@
 
 
 <script>
-/* ── NAVIGATION ── */
+const STORE = 'tricot_v7';
+let projects = [], editingId = null;
+
 function switchPage(p) {
-  document.querySelectorAll('.page').forEach(el=>el.classList.remove('active'));
-  document.getElementById('page-'+p).classList.add('active');
-  window.scrollTo(0,0);
+  document.querySelectorAll('.page').forEach(el => el.classList.remove('active'));
+  document.getElementById('page-' + p).classList.add('active');
+  window.scrollTo(0, 0);
+  if (p === 'projets') renderProjects();
+  if (p === 'home') updateBadge();
 }
 
-/* ══════════════════════
-   PAGE 1 — RANGS
-══════════════════════ */
-let selectedType='augm.',selectedClass='augm',totalSteps=0,doneSteps=0,rangCount=0,lastSteps=[];
-const STORE='tricot_v5';
-
-function saveRang(){
-  const checked=[...document.querySelectorAll('.step.done')].map(e=>parseInt(e.dataset.i));
-  const data=JSON.parse(localStorage.getItem(STORE)||'{}');
-  data.rang={rangCount,stitches:document.getElementById('stitches').value,increases:document.getElementById('increases').value,type:selectedType,steps:lastSteps,checked};
-  localStorage.setItem(STORE,JSON.stringify(data));
+function save() {
+  localStorage.setItem(STORE, JSON.stringify({ projects, repartition: getRepartitionState() }));
 }
-function loadRang(){
-  const d=(JSON.parse(localStorage.getItem(STORE)||'{}')).rang||{};
-  if(d.rangCount!==undefined){rangCount=d.rangCount;updateRangDisplay(false);}
-  if(d.stitches)document.getElementById('stitches').value=d.stitches;
-  if(d.increases)document.getElementById('increases').value=d.increases;
-  if(d.type){selectedType=d.type;selectedClass=d.type==='augm.'?'augm':'dim';document.querySelectorAll('.toggle-btn').forEach(b=>b.className='toggle-btn');document.getElementById(d.type==='augm.'?'btn-augm':'btn-dim').classList.add('active-'+selectedClass);}
-  if(d.steps&&d.steps.length>0){lastSteps=d.steps;renderResults(d.steps,d.type||'augm.',parseInt(d.stitches)||0,parseInt(d.increases)||0,d.checked||[]);}
+function load() {
+  const d = JSON.parse(localStorage.getItem(STORE) || '{}');
+  projects = d.projects || [];
+  if (d.repartition) restoreRepartition(d.repartition);
+  updateBadge();
+  renderProjects();
 }
-function changeRang(delta){rangCount=Math.max(0,rangCount+delta);updateRangDisplay(delta>0);saveRang();}
-function resetRang(){rangCount=0;updateRangDisplay(false);saveRang();}
-function updateRangDisplay(bump){
-  const el=document.getElementById('rang-num');el.textContent=rangCount;
-  if(bump){el.classList.add('bump');setTimeout(()=>el.classList.remove('bump'),200);}
-  const s=document.querySelector('.rang-label-small');if(s)s.textContent=rangCount===1?'rang':'rangs';
-}
-function setType(type,btn,cls){selectedType=type;selectedClass=cls;document.querySelectorAll('.toggle-btn').forEach(b=>b.className='toggle-btn');btn.classList.add('active-'+cls);saveRang();}
-function calculate(){
-  const N=parseInt(document.getElementById('stitches').value),K=parseInt(document.getElementById('increases').value);
-  if(!N||!K||isNaN(N)||isNaN(K)||N<1||K<1){shakeInput();return;}
-  if(K>N){alert('Le nombre de modifications ne peut pas dépasser le nombre de mailles.');return;}
-  lastSteps=distributeSteps(N,K);renderResults(lastSteps,selectedType,N,K,[]);saveRang();
-}
-function distributeSteps(N,K){const q=Math.floor(N/K),r=N%K;const s=[];let e=Math.floor(K/2);for(let i=0;i<K;i++){e+=r;if(e>=K){s.push(q+1);e-=K;}else s.push(q);}return s;}
-function renderResults(steps,type,N,K,checked){
-  if(N&&K){document.getElementById('info-n').textContent=N;document.getElementById('info-k').textContent=K;document.getElementById('info-k-lbl').textContent=type==='augm.'?'augm.':'dim.';document.getElementById('info-f').textContent=type==='augm.'?N+K:N-K;document.getElementById('compact').textContent=getCompact(steps,type);document.getElementById('sequence').textContent=steps.map(s=>s+' m. → 1 '+type).join('  ·  ');}
-  const list=document.getElementById('steps-list');list.innerHTML='';totalSteps=steps.length;doneSteps=0;let cur=1;
-  steps.forEach((s,i)=>{const st=cur,en=cur+s-1;cur+=s;const el=document.createElement('div');const isDone=checked.includes(i);if(isDone)doneSteps++;el.className='step'+(isDone?' done':'');el.dataset.i=i;el.innerHTML='<div class="step-badge">'+(i+1)+'</div><div class="step-body"><div class="step-main">'+s+' m. → 1 '+type+'</div><div class="step-hint">maille'+(s>1?'s '+st+'–'+en:' '+st)+'</div></div><div class="step-icon">✓</div>';el.addEventListener('click',()=>{toggleStep(el);saveRang();});list.appendChild(el);});
-  highlightNext();updateProgress();document.getElementById('complete-msg').classList.add('hidden');document.getElementById('results').classList.remove('hidden');
-  if(!checked.length)setTimeout(()=>document.getElementById('results').scrollIntoView({behavior:'smooth',block:'start'}),80);
-}
-function getCompact(steps,type){const g=[];let c=steps[0],n=1;for(let i=1;i<steps.length;i++){if(steps[i]===c)n++;else{g.push({s:c,c:n});c=steps[i];n=1;}}g.push({s:c,c:n});return g.map(x=>{const p=x.s+' m., 1 '+type;return x.c>1?x.c+'×('+p+')':p;}).join('  +  ');}
-function toggleStep(el){
-  const steps=[...document.querySelectorAll('.step')];const idx=steps.indexOf(el);
-  if(el.classList.contains('done')){steps.slice(idx).forEach(s=>{if(s.classList.contains('done')){s.classList.remove('done');doneSteps--;}});}
-  else{if(!steps.slice(0,idx).every(s=>s.classList.contains('done'))){shakeStep(el);return;}el.classList.add('done');doneSteps++;}
-  highlightNext();updateProgress();
-}
-function highlightNext(){const steps=[...document.querySelectorAll('.step')];steps.forEach(e=>e.classList.remove('active-next','locked'));let f=false;steps.forEach(s=>{if(!s.classList.contains('done')&&!f){s.classList.add('active-next');f=true;}else if(!s.classList.contains('done'))s.classList.add('locked');});}
-function shakeStep(el){el.style.transition='transform 0.08s ease';el.style.transform='translateX(6px)';setTimeout(()=>el.style.transform='translateX(-5px)',80);setTimeout(()=>el.style.transform='translateX(4px)',160);setTimeout(()=>el.style.transform='translateX(0)',240);setTimeout(()=>el.style.transition='',300);}
-function resetRepartition() {
-  document.getElementById('stitches').value='';
-  document.getElementById('increases').value='';
-  document.getElementById('results').classList.add('hidden');
-  doneSteps=0; totalSteps=0; lastSteps=[];
-  saveRang(); // ← persiste le reset dans le localStorage
-}
-function updateProgress(){const pct=totalSteps>0?(doneSteps/totalSteps)*100:0;document.getElementById('bar').style.width=pct+'%';document.getElementById('prog-done').textContent=doneSteps;document.getElementById('prog-total').textContent=totalSteps;document.getElementById('complete-msg').classList.toggle('hidden',doneSteps<totalSteps||totalSteps===0);}
-function resetSteps(){document.querySelectorAll('.step').forEach(e=>e.classList.remove('done','locked','active-next'));doneSteps=0;highlightNext();updateProgress();saveRang();}
-function shakeInput(){document.querySelectorAll('#page-rangs input').forEach(i=>{i.style.borderColor='rgba(239,170,196,0.6)';setTimeout(()=>i.style.borderColor='',800);});}
-
-/* ══════════════════════
-   PAGE 2 — PROJETS
-══════════════════════ */
-let projects=[],activeProjectId=null,uploadedPdfName='',editPdfName='',editingId=null;
-
-function saveProjects(){const data=JSON.parse(localStorage.getItem(STORE)||'{}');data.projects=projects;data.activeProjectId=activeProjectId;localStorage.setItem(STORE,JSON.stringify(data));}
-function loadProjects(){const data=JSON.parse(localStorage.getItem(STORE)||'{}');projects=data.projects||[];activeProjectId=data.activeProjectId??null;renderProjects();if(activeProjectId!==null)openProject(activeProjectId,false);}
-function onPdfChange(input){uploadedPdfName=input.files[0]?.name||'';document.getElementById('pdf-filename').textContent=uploadedPdfName?'📄 '+uploadedPdfName:'';}
-function onEditPdfChange(input){editPdfName=input.files[0]?.name||'';document.getElementById('edit-pdf-filename').textContent=editPdfName?'📄 '+editPdfName:'';}
-
-function addProject(){
-  const name=document.getElementById('new-project-name').value.trim();
-  if(!name){document.getElementById('new-project-name').focus();return;}
-  const emojis=['🧶','🪡','🧵','🎀','🌸','✨','🎁','🧤','🧣','👒'];
-  projects.push({id:Date.now(),name,emoji:emojis[Math.floor(Math.random()*emojis.length)],maillesTotal:parseInt(document.getElementById('new-project-mailles').value)||0,montageCount:0,patronUrl:document.getElementById('new-project-url').value.trim(),patronPdf:uploadedPdfName});
-  ['new-project-name','new-project-mailles','new-project-url'].forEach(id=>document.getElementById(id).value='');
-  document.getElementById('pdf-filename').textContent='';uploadedPdfName='';
-  saveProjects();renderProjects();
-  openProject(projects[projects.length-1].id);
+function updateBadge() {
+  document.getElementById('badge-count').textContent = projects.length;
 }
 
-function deleteProject(id){
-  if(!confirm('Supprimer ce projet ?'))return;
-  projects=projects.filter(p=>p.id!==id);
-  if(activeProjectId===id){activeProjectId=null;document.getElementById('projet-detail').classList.add('hidden');}
-  saveProjects();renderProjects();
+/* NOUVEAU PROJET */
+function createProject() {
+  const name = document.getElementById('new-name').value.trim();
+  if (!name) { document.getElementById('new-name').focus(); return; }
+  const emojis = ['🧶','🪡','🧵','🎀','🌸','✨','🎁','🧤','🧣','👒'];
+  projects.push({
+    id: Date.now(), name,
+    emoji: emojis[Math.floor(Math.random() * emojis.length)],
+    maillesTotal: parseInt(document.getElementById('new-mailles').value) || 0,
+    montageCount: 0,
+    patronUrl: document.getElementById('new-url').value.trim(),
+    notes: document.getElementById('new-notes').value.trim(),
+    rangCount: 0
+  });
+  ['new-name','new-mailles','new-url'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('new-notes').value = '';
+  save(); updateBadge();
+  switchPage('projets');
 }
 
-function toggleExpand(id){
-  const card=document.querySelector(`.project-card[data-id="${id}"]`);
-  if(!card)return;
-  const wasExpanded=card.classList.contains('expanded');
-  document.querySelectorAll('.project-card.expanded').forEach(c=>c.classList.remove('expanded'));
-  if(!wasExpanded)card.classList.add('expanded');
-}
+/* PROJETS EN COURS */
+function renderProjects() {
+  const list = document.getElementById('projects-list');
+  list.innerHTML = '';
+  if (projects.length === 0) {
+    list.innerHTML = '<div style="font-family:\'Funnel Display\',sans-serif;font-size:0.85rem;color:var(--muted);text-align:center;padding:24px 0;background:rgba(255,255,255,0.5);border-radius:14px;">Aucun projet pour l\'instant...<br><small style="font-size:0.78rem;margin-top:6px;display:block;">crée ton premier projet depuis l\'accueil !</small></div>';
+    return;
+  }
+  projects.forEach(p => {
+    const pct = p.maillesTotal > 0 ? Math.min(100, Math.round(p.montageCount / p.maillesTotal * 100)) : null;
+    const metaText = p.maillesTotal > 0
+      ? `${p.montageCount}/${p.maillesTotal} mailles montées${pct !== null ? ' · ' + pct + '%' : ''}`
+      : `rang ${p.rangCount}`;
 
-function renderProjects(){
-  const grid=document.getElementById('projects-grid');grid.innerHTML='';
-  if(projects.length===0){grid.innerHTML='<div style="font-family:\'Funnel Display\',sans-serif;font-size:0.85rem;color:var(--muted);text-align:center;padding:16px 0;">aucun projet pour l\'instant 🧶</div>';return;}
-  projects.forEach(p=>{
-    const el=document.createElement('div');
-    el.className='project-card'+(p.id===activeProjectId?' active-project':'');
-    el.dataset.id=p.id;
-    const pct=p.maillesTotal>0?Math.min(100,Math.round(p.montageCount/p.maillesTotal*100)):null;
-    const metaText=p.maillesTotal>0?p.montageCount+'/'+p.maillesTotal+' montées'+(pct!==null?' · '+pct+'%':''):'montage non défini';
+    const patronHtml = p.patronUrl
+      ? `<div class="patron-row"><a class="patron-link" href="${p.patronUrl}" target="_blank" rel="noopener"><i class="fa-solid fa-link"></i> voir le patron</a></div>`
+      : '';
 
-    // Patron dans le détail
-    let patronHtml='';
-    if(p.patronUrl) patronHtml+=`<a class="patron-link" href="${p.patronUrl}" target="_blank" rel="noopener"><i class="fa-solid fa-link"></i> voir le patron</a>`;
-    if(p.patronPdf) patronHtml+=`<span class="patron-pdf-badge"><i class="fa-solid fa-file-pdf"></i> ${p.patronPdf}</span>`;
+    const progressHtml = p.maillesTotal > 0 ? `
+      <div class="mini-progress">
+        <div class="mini-progress-top">
+          <span>montage</span>
+          <strong>${p.montageCount} / ${p.maillesTotal}${pct !== null ? ' · ' + pct + '%' : ''}</strong>
+        </div>
+        <div class="bar-bg"><div class="bar-fill" style="width:${pct||0}%"></div></div>
+      </div>` : '';
 
-    // Mini barre progression
-    const barWidth=pct!==null?pct:0;
-    const progressHtml=p.maillesTotal>0?`
-      <div class="detail-progress">
-        <div class="detail-progress-top"><span>montage</span><strong>${p.montageCount} / ${p.maillesTotal} mailles ${pct!==null?'· '+pct+'%':''}</strong></div>
-        <div class="bar-bg"><div class="bar-fill" style="width:${barWidth}%"></div></div>
-      </div>`:'';
+    const notesHtml = p.notes
+      ? `<div class="section-label" style="margin-bottom:8px;"><div class="dot-label"></div>notes</div><div class="notes-display">${p.notes.replace(/</g,'&lt;')}</div>`
+      : `<div class="section-label" style="margin-bottom:8px;"><div class="dot-label"></div>notes</div><div class="notes-display empty">aucune note pour ce projet</div>`;
 
-    el.innerHTML=`
+    const el = document.createElement('div');
+    el.className = 'project-card';
+    el.dataset.id = p.id;
+    el.innerHTML = `
       <div class="project-summary">
         <div class="project-emoji">${p.emoji}</div>
         <div class="project-info">
-          <div class="project-name">${p.name}</div>
+          <div class="project-name-text">${p.name}</div>
           <div class="project-meta">${metaText}</div>
         </div>
         <div class="project-actions">
-          <button class="btn-icon edit" title="modifier" onclick="event.stopPropagation();openEdit(${p.id})"><i class="fa-solid fa-pen"></i></button>
-          <button class="btn-icon" title="supprimer" onclick="event.stopPropagation();deleteProject(${p.id})"><i class="fa-solid fa-xmark"></i></button>
+          <button class="btn-icon edit" onclick="event.stopPropagation();openEdit(${p.id})" title="modifier"><i class="fa-solid fa-pen"></i></button>
+          <button class="btn-icon" onclick="event.stopPropagation();deleteProject(${p.id})" title="supprimer"><i class="fa-solid fa-xmark"></i></button>
           <i class="fa-solid fa-chevron-down project-chevron"></i>
         </div>
       </div>
-      <div class="project-detail">
-        <div class="project-detail-inner">
+      <div class="project-expanded">
+        <div class="project-expanded-inner">
           ${progressHtml}
-          ${patronHtml?`<div class="patron-row">${patronHtml}</div>`:''}
-          <div class="detail-actions">
-            <button class="detail-btn" onclick="openProject(${p.id})"><i class="fa-solid fa-scissors"></i> montage</button>
+          ${patronHtml}
+          ${notesHtml}
+          <div style="height:12px;"></div>
+          <div class="rang-counter-card">
+            <div class="rang-counter-top">
+              <div class="rang-counter-label"><div class="dot-label"></div>compteur de rangs</div>
+              <button class="rang-reset-btn" onclick="resetRangProjet(${p.id})">↺ reset</button>
+            </div>
+            <div class="rang-circle">
+              <div class="rang-circle-num" id="rang-num-${p.id}">${p.rangCount}</div>
+              <div class="rang-circle-lbl">${p.rangCount === 1 ? 'rang' : 'rangs'}</div>
+            </div>
+            <div class="rang-btns">
+              <button class="rang-btn rang-btn-minus" onclick="changeRangProjet(${p.id},-1)">−</button>
+              <button class="rang-btn rang-btn-plus" onclick="changeRangProjet(${p.id},1)">+</button>
+            </div>
           </div>
         </div>
       </div>`;
 
-    el.querySelector('.project-summary').addEventListener('click',()=>toggleExpand(p.id));
-    grid.appendChild(el);
+    el.querySelector('.project-summary').addEventListener('click', () => {
+      const wasOpen = el.classList.contains('expanded');
+      document.querySelectorAll('.project-card.expanded').forEach(c => c.classList.remove('expanded'));
+      if (!wasOpen) el.classList.add('expanded');
+    });
+    list.appendChild(el);
   });
 }
 
-function openProject(id,scroll=true){
-  activeProjectId=id;
-  const p=projects.find(p=>p.id===id);if(!p)return;
-  renderProjects();updateMontageUI(p);
-  document.getElementById('projet-detail').classList.remove('hidden');
-  if(scroll)setTimeout(()=>document.getElementById('projet-detail').scrollIntoView({behavior:'smooth',block:'start'}),80);
-  saveProjects();
+function changeRangProjet(id, delta) {
+  const p = projects.find(p => p.id === id); if (!p) return;
+  p.rangCount = Math.max(0, (p.rangCount || 0) + delta);
+  const el = document.getElementById('rang-num-' + id);
+  if (el) {
+    el.textContent = p.rangCount;
+    el.classList.add('bump'); setTimeout(() => el.classList.remove('bump'), 200);
+    const lbl = el.nextElementSibling;
+    if (lbl) lbl.textContent = p.rangCount === 1 ? 'rang' : 'rangs';
+  }
+  const card = document.querySelector(`.project-card[data-id="${id}"]`);
+  if (card && p.maillesTotal === 0) {
+    const meta = card.querySelector('.project-meta');
+    if (meta) meta.textContent = `rang ${p.rangCount}`;
+  }
+  save();
 }
 
-function updateMontageUI(p){
-  const total=p.maillesTotal||0,count=p.montageCount||0;
-  const pct=total>0?Math.min(100,Math.round(count/total*100)):0;
-  const offset=(2*Math.PI*70)-(pct/100)*(2*Math.PI*70);
-  document.getElementById('montage-count').textContent=count;
-  document.getElementById('montage-total-label').textContent='/ '+total+' mailles';
-  document.getElementById('montage-pct').textContent=total>0?pct+'%':'—';
-  document.getElementById('montage-arc').style.strokeDashoffset=offset;
-  const done=total>0&&count>=total;
-  document.getElementById('montage-done').classList.toggle('show',done);
-  if(done)document.getElementById('montage-done-text').textContent=p.maillesTotal+' mailles montées — c\'est parti ! 🎉';
+function resetRangProjet(id) {
+  const p = projects.find(p => p.id === id); if (!p) return;
+  p.rangCount = 0;
+  const el = document.getElementById('rang-num-' + id);
+  if (el) { el.textContent = 0; const lbl = el.nextElementSibling; if (lbl) lbl.textContent = 'rangs'; }
+  save();
 }
 
-function changeMontage(delta){
-  const p=projects.find(p=>p.id===activeProjectId);if(!p)return;
-  p.montageCount=Math.max(0,(p.montageCount||0)+delta);
-  if(p.maillesTotal>0)p.montageCount=Math.min(p.montageCount,p.maillesTotal);
-  const el=document.getElementById('montage-count');el.classList.add('bump');setTimeout(()=>el.classList.remove('bump'),180);
-  updateMontageUI(p);renderProjects();saveProjects();
+function deleteProject(id) {
+  if (!confirm('Supprimer ce projet ?')) return;
+  projects = projects.filter(p => p.id !== id);
+  save(); updateBadge(); renderProjects();
 }
-function resetMontage(){const p=projects.find(p=>p.id===activeProjectId);if(!p)return;p.montageCount=0;updateMontageUI(p);saveProjects();}
 
-/* ── MODAL ÉDITION ── */
-function openEdit(id){
-  editingId=id;editPdfName='';
-  const p=projects.find(p=>p.id===id);if(!p)return;
-  document.getElementById('edit-name').value=p.name||'';
-  document.getElementById('edit-mailles').value=p.maillesTotal||'';
-  document.getElementById('edit-url').value=p.patronUrl||'';
-  document.getElementById('edit-pdf-filename').textContent=p.patronPdf?'📄 '+p.patronPdf:'';
+/* MODAL ÉDITION */
+function openEdit(id) {
+  editingId = id;
+  const p = projects.find(p => p.id === id); if (!p) return;
+  document.getElementById('edit-name').value = p.name || '';
+  document.getElementById('edit-mailles').value = p.maillesTotal || '';
+  document.getElementById('edit-url').value = p.patronUrl || '';
+  document.getElementById('edit-notes').value = p.notes || '';
   document.getElementById('modal-overlay').classList.add('open');
-  document.body.style.overflow='hidden';
+  document.body.style.overflow = 'hidden';
 }
-function closeModal(e){
-  if(e&&e.target!==document.getElementById('modal-overlay'))return;
+function closeModal() {
   document.getElementById('modal-overlay').classList.remove('open');
-  document.body.style.overflow='';
+  document.body.style.overflow = '';
 }
-function saveEdit(){
-  const p=projects.find(p=>p.id===editingId);if(!p)return;
-  const name=document.getElementById('edit-name').value.trim();
-  if(!name)return;
-  p.name=name;
-  const m=parseInt(document.getElementById('edit-mailles').value);
-  if(!isNaN(m)&&m>0)p.maillesTotal=m;
-  const url=document.getElementById('edit-url').value.trim();
-  p.patronUrl=url||'';
-  if(editPdfName)p.patronPdf=editPdfName;
-  saveProjects();renderProjects();
-  if(activeProjectId===editingId)updateMontageUI(p);
-  document.getElementById('modal-overlay').classList.remove('open');
-  document.body.style.overflow='';
+function saveEdit() {
+  const p = projects.find(p => p.id === editingId); if (!p) return;
+  const name = document.getElementById('edit-name').value.trim(); if (!name) return;
+  p.name = name;
+  const m = parseInt(document.getElementById('edit-mailles').value);
+  if (!isNaN(m) && m > 0) p.maillesTotal = m;
+  p.patronUrl = document.getElementById('edit-url').value.trim();
+  p.notes = document.getElementById('edit-notes').value.trim();
+  save(); renderProjects(); closeModal();
 }
-document.getElementById('modal-overlay').addEventListener('click',e=>{if(e.target===document.getElementById('modal-overlay'))closeModal(e);});
-document.addEventListener('keydown',e=>{
-  if(e.key==='Escape')closeModal();
-  if(e.key==='Enter'&&document.getElementById('page-rangs').classList.contains('active'))calculate();
+document.getElementById('modal-overlay').addEventListener('click', e => {
+  if (e.target === document.getElementById('modal-overlay')) closeModal();
 });
-window.addEventListener('load',()=>{loadRang();loadProjects();});
+
+/* RÉPARTITION */
+let selectedType = 'augm.', selectedClass = 'augm', totalSteps = 0, doneSteps = 0, lastSteps = [];
+
+function setType(type, btn, cls) {
+  selectedType = type; selectedClass = cls;
+  document.querySelectorAll('.toggle-btn').forEach(b => b.className = 'toggle-btn');
+  btn.classList.add('active-' + cls); save();
+}
+function calculate() {
+  const N = parseInt(document.getElementById('stitches').value), K = parseInt(document.getElementById('increases').value);
+  if (!N || !K || isNaN(N) || isNaN(K) || N < 1 || K < 1) { shakeInput(); return; }
+  if (K > N) { alert('Le nombre de modifications ne peut pas dépasser le nombre de mailles.'); return; }
+  lastSteps = distributeSteps(N, K);
+  renderResults(lastSteps, selectedType, N, K, []); save();
+}
+function distributeSteps(N, K) {
+  const q = Math.floor(N / K), r = N % K; const s = []; let e = Math.floor(K / 2);
+  for (let i = 0; i < K; i++) { e += r; if (e >= K) { s.push(q + 1); e -= K; } else s.push(q); } return s;
+}
+function renderResults(steps, type, N, K, checked) {
+  if (N && K) {
+    document.getElementById('info-n').textContent = N;
+    document.getElementById('info-k').textContent = K;
+    document.getElementById('info-k-lbl').textContent = type === 'augm.' ? 'augm.' : 'dim.';
+    document.getElementById('info-f').textContent = type === 'augm.' ? N + K : N - K;
+    document.getElementById('compact').textContent = getCompact(steps, type);
+    document.getElementById('sequence').textContent = steps.map(s => s + ' m. → 1 ' + type).join('  ·  ');
+  }
+  const list = document.getElementById('steps-list'); list.innerHTML = '';
+  totalSteps = steps.length; doneSteps = 0; let cur = 1;
+  steps.forEach((s, i) => {
+    const st = cur, en = cur + s - 1; cur += s;
+    const el = document.createElement('div');
+    const isDone = checked.includes(i); if (isDone) doneSteps++;
+    el.className = 'step' + (isDone ? ' done' : ''); el.dataset.i = i;
+    el.innerHTML = `<div class="step-badge">${i+1}</div><div class="step-body"><div class="step-main">${s} m. → 1 ${type}</div><div class="step-hint">maille${s>1?'s '+st+'–'+en:' '+st}</div></div><div class="step-icon">✓</div>`;
+    el.addEventListener('click', () => { toggleStep(el); save(); });
+    list.appendChild(el);
+  });
+  highlightNext(); updateProgress();
+  document.getElementById('complete-msg').classList.add('hidden');
+  document.getElementById('results').classList.remove('hidden');
+  if (!checked.length) setTimeout(() => document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
+}
+function getCompact(steps, type) {
+  const g = []; let c = steps[0], n = 1;
+  for (let i = 1; i < steps.length; i++) { if (steps[i] === c) n++; else { g.push({s:c,c:n}); c = steps[i]; n = 1; } }
+  g.push({s:c,c:n});
+  return g.map(x => { const p = x.s + ' m., 1 ' + type; return x.c > 1 ? x.c + '×(' + p + ')' : p; }).join('  +  ');
+}
+function toggleStep(el) {
+  const steps = [...document.querySelectorAll('.step')]; const idx = steps.indexOf(el);
+  if (el.classList.contains('done')) { steps.slice(idx).forEach(s => { if (s.classList.contains('done')) { s.classList.remove('done'); doneSteps--; } }); }
+  else { if (!steps.slice(0, idx).every(s => s.classList.contains('done'))) { shakeStep(el); return; } el.classList.add('done'); doneSteps++; }
+  highlightNext(); updateProgress();
+}
+function highlightNext() {
+  const steps = [...document.querySelectorAll('.step')]; steps.forEach(e => e.classList.remove('active-next','locked'));
+  let f = false; steps.forEach(s => { if (!s.classList.contains('done') && !f) { s.classList.add('active-next'); f = true; } else if (!s.classList.contains('done')) s.classList.add('locked'); });
+}
+function shakeStep(el) { el.style.transition='transform 0.08s'; el.style.transform='translateX(6px)'; setTimeout(()=>el.style.transform='translateX(-5px)',80); setTimeout(()=>el.style.transform='translateX(4px)',160); setTimeout(()=>el.style.transform='translateX(0)',240); setTimeout(()=>el.style.transition='',300); }
+function resetRepartition() {
+  document.getElementById('stitches').value = '';
+  document.getElementById('increases').value = '';
+  document.getElementById('results').classList.add('hidden');
+  doneSteps = 0; totalSteps = 0; lastSteps = []; save();
+}
+function updateProgress() {
+  const pct = totalSteps > 0 ? (doneSteps / totalSteps) * 100 : 0;
+  document.getElementById('bar').style.width = pct + '%';
+  document.getElementById('prog-done').textContent = doneSteps;
+  document.getElementById('prog-total').textContent = totalSteps;
+  document.getElementById('complete-msg').classList.toggle('hidden', doneSteps < totalSteps || totalSteps === 0);
+}
+function resetSteps() { document.querySelectorAll('.step').forEach(e => e.classList.remove('done','locked','active-next')); doneSteps = 0; highlightNext(); updateProgress(); save(); }
+function shakeInput() { document.querySelectorAll('#page-repartition input').forEach(i => { i.style.borderColor='rgba(239,170,196,0.6)'; setTimeout(()=>i.style.borderColor='',800); }); }
+
+function getRepartitionState() {
+  const checked = [...document.querySelectorAll('.step.done')].map(e => parseInt(e.dataset.i));
+  return { stitches: document.getElementById('stitches').value, increases: document.getElementById('increases').value, type: selectedType, steps: lastSteps, checked };
+}
+function restoreRepartition(d) {
+  if (d.stitches) document.getElementById('stitches').value = d.stitches;
+  if (d.increases) document.getElementById('increases').value = d.increases;
+  if (d.type) {
+    selectedType = d.type; selectedClass = d.type === 'augm.' ? 'augm' : 'dim';
+    document.querySelectorAll('.toggle-btn').forEach(b => b.className = 'toggle-btn');
+    document.getElementById(d.type === 'augm.' ? 'btn-augm' : 'btn-dim').classList.add('active-' + selectedClass);
+  }
+  if (d.steps && d.steps.length > 0) { lastSteps = d.steps; renderResults(d.steps, d.type || 'augm.', parseInt(d.stitches) || 0, parseInt(d.increases) || 0, d.checked || []); }
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+  if (e.key === 'Enter' && document.getElementById('page-repartition').classList.contains('active')) calculate();
+});
+window.addEventListener('load', load);
 </script>
 </body>
 </html>
