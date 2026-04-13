@@ -39,22 +39,24 @@
     color: var(--text); min-height: 100vh;
     padding: 0 0 40px; max-width: 520px; margin: 0 auto;
   }
-
   .page { display: none; padding: 20px 16px; }
   .page.active { display: block; animation: fadeUp 0.25s ease both; }
 
+  /* HEADER */
   header { padding: 52px 0 28px; text-align: center; }
   .logo { width: 68px; height: 68px; background: rgba(255,255,255,0.75); border: 1.5px solid var(--border-soft); border-radius: 22px; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 16px; box-shadow: 0 4px 18px rgba(239,170,196,0.25); }
   header h1 { font-family: 'Funnel Display', sans-serif; font-size: 2.4rem; font-weight: 700; color: var(--text); letter-spacing: -0.5px; line-height: 1; }
   .header-dot { color: var(--accent-dim); }
   header p { font-family: 'Funnel Display', sans-serif; font-weight: 300; color: var(--muted); font-size: 0.92rem; margin-top: 7px; }
 
+  /* PAGE HEADER */
   .page-header { padding: 44px 0 8px; }
   .page-header-inner { display: flex; align-items: center; gap: 14px; }
   .page-header-icon { width: 46px; height: 46px; border-radius: 14px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.6); border: 1.5px solid var(--border-soft); box-shadow: 0 2px 8px rgba(239,170,196,0.15); font-size: 1.1rem; color: var(--accent-dim); }
   .page-header h2 { font-family: 'Funnel Display', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
   .page-header p { font-family: 'Funnel Display', sans-serif; font-weight: 300; color: var(--muted); font-size: 0.82rem; margin-top: 3px; }
 
+  /* BACK BTN */
   .back-btn { display: inline-flex; align-items: center; gap: 7px; font-family: 'Funnel Display', sans-serif; font-size: 0.8rem; font-weight: 600; color: var(--muted); background: var(--surface); border: 1.5px solid var(--border); border-radius: 10px; padding: 6px 13px; cursor: pointer; transition: all 0.2s; margin: 14px 0 20px; }
   .back-btn:hover { color: var(--accent-dim); border-color: var(--border-soft); }
 
@@ -89,24 +91,12 @@
   input::placeholder { color: var(--done); }
 
   /* TEXTAREA NOTES */
-  textarea {
-    padding: 13px 14px; background: var(--surface-2); border: 1.5px solid var(--border);
-    border-radius: 13px; color: var(--text); font-size: 0.9rem; font-weight: 400;
-    font-family: 'DM Sans', inherit; outline: none; width: 100%; resize: none;
-    transition: border-color 0.25s, box-shadow 0.25s; line-height: 1.6;
-    min-height: 90px;
-  }
+  textarea { padding: 13px 14px; background: var(--surface-2); border: 1.5px solid var(--border); border-radius: 13px; color: var(--text); font-size: 0.9rem; font-weight: 400; font-family: 'DM Sans', inherit; outline: none; width: 100%; resize: none; transition: border-color 0.25s, box-shadow 0.25s; line-height: 1.6; min-height: 90px; }
   textarea:focus { border-color: var(--accent-dim); box-shadow: 0 0 0 3px rgba(239,170,196,0.2); }
   textarea::placeholder { color: var(--done); }
 
-  /* Bloc notes affiché dans le détail projet */
-  .notes-display {
-    background: var(--surface-2); border: 1.5px solid var(--border);
-    border-left: 3px solid var(--accent-dim); border-radius: 13px;
-    padding: 11px 14px; margin-bottom: 14px;
-    font-size: 0.84rem; color: var(--text-soft); line-height: 1.65;
-    white-space: pre-wrap; word-break: break-word;
-  }
+  /* NOTES DISPLAY */
+  .notes-display { background: var(--surface-2); border: 1.5px solid var(--border); border-left: 3px solid var(--accent-dim); border-radius: 13px; padding: 11px 14px; margin-bottom: 14px; font-size: 0.84rem; color: var(--text-soft); line-height: 1.65; white-space: pre-wrap; word-break: break-word; }
   .notes-display.empty { color: var(--done); font-style: italic; }
 
   /* TOGGLE */
@@ -170,13 +160,40 @@
   .complete-card p { font-family: 'Funnel Display', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--green); margin-top: 8px; }
   .complete-card small { font-family: 'Funnel Display', sans-serif; font-size: 0.8rem; color: var(--muted); display: block; margin-top: 4px; }
 
-  /* NOUVEAU PROJET */
+  /* FORMULAIRES */
   .field-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; }
   .field-group label { font-family: 'Funnel Display', sans-serif; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
 
-  /* PROJETS EN COURS */
+  /* MONTAGE CERCLE */
+  .montage-wrap { background: var(--surface); border: 1.5px solid var(--border-soft); border-radius: var(--radius); padding: 22px; margin-bottom: 12px; backdrop-filter: blur(8px); }
+  .montage-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+  .montage-title { font-family: 'Funnel Display', sans-serif; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); display: flex; align-items: center; gap: 9px; }
+  .montage-circle-wrap { width: 160px; height: 160px; margin: 0 auto 22px; position: relative; display: flex; align-items: center; justify-content: center; }
+  .montage-circle-wrap svg { position: absolute; inset: 0; transform: rotate(-90deg); }
+  .m-circle-bg   { fill: none; stroke: rgba(239,170,196,0.2); stroke-width: 8; }
+  .m-circle-fill { fill: none; stroke: url(#pink-grad); stroke-width: 8; stroke-linecap: round; stroke-dasharray: 440; stroke-dashoffset: 440; transition: stroke-dashoffset 0.5s cubic-bezier(0.34,1.56,0.64,1); }
+  .montage-inner { text-align: center; z-index: 1; position: relative; }
+  .montage-num { font-family: 'Funnel Display', sans-serif; font-size: 2.6rem; font-weight: 800; color: var(--text); line-height: 1; transition: transform 0.15s cubic-bezier(0.34,1.56,0.64,1); }
+  .montage-num.bump { transform: scale(1.18); }
+  .montage-sub { font-family: 'Funnel Display', sans-serif; font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin-top: 2px; }
+  .montage-pct-label { font-family: 'Funnel Display', sans-serif; font-size: 0.88rem; font-weight: 700; color: var(--accent-dim); margin-top: 1px; }
+  .montage-controls { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; }
+  .m-btn { padding: 11px 18px; border-radius: 12px; border: 1.5px solid var(--border-soft); font-family: 'Funnel Display', sans-serif; font-size: 0.9rem; font-weight: 700; cursor: pointer; transition: all 0.2s; }
+  .m-btn-plus { background: linear-gradient(135deg, var(--blush-pop), var(--pastel-pink)); color: #fff; border-color: transparent; box-shadow: 0 3px 12px rgba(239,170,196,0.4); padding: 12px 26px; }
+  .m-btn-plus:hover { box-shadow: 0 5px 18px rgba(239,170,196,0.55); }
+  .m-btn-minus { background: var(--surface-2); color: var(--muted); }
+  .m-btn-minus:hover { color: var(--accent-dim); border-color: var(--accent-dim); }
+  .m-btn-ten { background: rgba(239,170,196,0.12); color: var(--accent-dim); border-color: rgba(239,170,196,0.35); font-size: 0.82rem; padding: 10px 14px; }
+  .m-btn-ten:hover { background: rgba(239,170,196,0.22); }
+  .m-btn:active { transform: scale(0.93); }
+  .montage-done { background: linear-gradient(135deg,rgba(106,154,106,0.15),rgba(144,200,144,0.1)); border: 1.5px solid rgba(106,154,106,0.3); border-radius: 13px; padding: 14px; text-align: center; margin-top: 14px; display: none; }
+  .montage-done.show { display: block; }
+  .montage-done p { font-family: 'Funnel Display', sans-serif; font-size: 1rem; font-weight: 700; color: var(--green); }
+  .montage-done small { font-family: 'Funnel Display', sans-serif; font-size: 0.8rem; color: var(--muted); }
+
+  /* PROJETS */
   .projects-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px; }
-  .project-card { background: var(--surface); border: 1.5px solid var(--border); border-radius: 16px; overflow: hidden; backdrop-filter: blur(8px); transition: border-color 0.2s, box-shadow 0.2s; }
+  .project-card { background: var(--surface); border: 1.5px solid var(--border); border-radius: 16px; overflow: hidden; backdrop-filter: blur(8px); transition: border-color 0.2s; }
   .project-card:hover { border-color: var(--border-soft); }
   .project-summary { display: flex; align-items: center; gap: 12px; padding: 16px 18px; cursor: pointer; }
   .project-emoji { font-size: 1.5rem; flex-shrink: 0; }
@@ -186,20 +203,18 @@
   .project-actions { display: flex; gap: 4px; align-items: center; flex-shrink: 0; }
   .project-chevron { font-size: 0.8rem; color: var(--muted); transition: transform 0.25s; margin-left: 2px; }
   .project-card.expanded .project-chevron { transform: rotate(180deg); }
-  .project-expanded { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1); border-top: 0px solid var(--border); }
-  .project-card.expanded .project-expanded { max-height: 900px; border-top-width: 1px; }
+  .project-expanded { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1); border-top: 0px solid var(--border); }
+  .project-card.expanded .project-expanded { max-height: 1100px; border-top-width: 1px; }
   .project-expanded-inner { padding: 16px 18px 18px; }
-
   .patron-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
   .patron-link { display: inline-flex; align-items: center; gap: 6px; font-family: 'Funnel Display', sans-serif; font-size: 0.8rem; font-weight: 600; color: var(--accent-dim); background: rgba(239,170,196,0.12); border: 1.5px solid rgba(239,170,196,0.3); border-radius: 20px; padding: 6px 14px; text-decoration: none; transition: background 0.2s; }
   .patron-link:hover { background: rgba(239,170,196,0.22); }
-
   .mini-progress { margin-bottom: 14px; }
   .mini-progress-top { display: flex; justify-content: space-between; margin-bottom: 6px; }
   .mini-progress-top span { font-family: 'Funnel Display', sans-serif; font-size: 0.78rem; font-weight: 600; color: var(--muted); }
   .mini-progress-top strong { font-family: 'Funnel Display', sans-serif; font-size: 0.8rem; font-weight: 700; color: var(--accent-dim); }
 
-  /* COMPTEUR DE RANGS */
+  /* COMPTEUR RANGS */
   .rang-counter-card { background: var(--surface-2); border: 1.5px solid var(--border); border-radius: 14px; padding: 18px; margin-bottom: 4px; }
   .rang-counter-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
   .rang-counter-label { font-family: 'Funnel Display', sans-serif; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); display: flex; align-items: center; gap: 8px; }
@@ -282,7 +297,6 @@
   </div>
 </div>
 
-
 <!-- NOUVEAU PROJET -->
 <div class="page" id="page-nouveau">
   <div class="page-header">
@@ -299,12 +313,11 @@
     <div class="field-group"><label>lien patron (URL)</label><input type="url" id="new-url" placeholder="https://ravelry.com/…"></div>
     <div class="field-group" style="margin-bottom:18px;">
       <label>notes</label>
-      <textarea id="new-notes" placeholder="laine utilisée, taille d'aiguilles, remarques…" rows="3"></textarea>
+      <textarea id="new-notes" placeholder="laine utilisée, taille d'aiguilles, remarques…"></textarea>
     </div>
     <button class="btn-cta" onclick="createProject()">✨ créer le projet</button>
   </div>
 </div>
-
 
 <!-- PROJETS EN COURS -->
 <div class="page" id="page-projets">
@@ -318,7 +331,6 @@
   <div style="height:18px;"></div>
   <div id="projects-list" class="projects-list"></div>
 </div>
-
 
 <!-- RÉPARTITION -->
 <div class="page" id="page-repartition">
@@ -371,7 +383,6 @@
   </div>
 </div>
 
-
 <!-- MODAL ÉDITION -->
 <div class="modal-overlay" id="modal-overlay">
   <div class="modal-sheet">
@@ -382,7 +393,7 @@
     <div class="modal-field"><label>lien patron (URL)</label><input type="url" id="edit-url" placeholder="https://…"></div>
     <div class="modal-field">
       <label>notes</label>
-      <textarea id="edit-notes" placeholder="laine utilisée, taille d'aiguilles, remarques…" rows="4"></textarea>
+      <textarea id="edit-notes" placeholder="laine utilisée, taille d'aiguilles, remarques…"></textarea>
     </div>
     <div class="modal-actions">
       <button class="modal-btn-cancel" onclick="closeModal()">annuler</button>
@@ -390,7 +401,6 @@
     </div>
   </div>
 </div>
-
 
 <script>
 const STORE = 'tricot_v7';
@@ -456,18 +466,47 @@ function renderProjects() {
       ? `<div class="patron-row"><a class="patron-link" href="${p.patronUrl}" target="_blank" rel="noopener"><i class="fa-solid fa-link"></i> voir le patron</a></div>`
       : '';
 
-    const progressHtml = p.maillesTotal > 0 ? `
-      <div class="mini-progress">
-        <div class="mini-progress-top">
-          <span>montage</span>
-          <strong>${p.montageCount} / ${p.maillesTotal}${pct !== null ? ' · ' + pct + '%' : ''}</strong>
-        </div>
-        <div class="bar-bg"><div class="bar-fill" style="width:${pct||0}%"></div></div>
-      </div>` : '';
-
     const notesHtml = p.notes
-      ? `<div class="section-label" style="margin-bottom:8px;"><div class="dot-label"></div>notes</div><div class="notes-display">${p.notes.replace(/</g,'&lt;')}</div>`
+      ? `<div class="section-label" style="margin-bottom:8px;"><div class="dot-label"></div>notes</div><div class="notes-display">${p.notes.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>`
       : `<div class="section-label" style="margin-bottom:8px;"><div class="dot-label"></div>notes</div><div class="notes-display empty">aucune note pour ce projet</div>`;
+
+    const dashOffset = p.maillesTotal > 0
+      ? 440 - Math.min(440, (p.montageCount / p.maillesTotal) * 440)
+      : 440;
+
+    const montageHtml = p.maillesTotal > 0 ? `
+      <div class="montage-wrap" id="mwrap-${p.id}">
+        <div class="montage-header">
+          <div class="montage-title"><div class="dot-label"></div>montage des mailles</div>
+          <span class="montage-pct-label" id="mpct-${p.id}">${pct !== null ? pct + '%' : '0%'}</span>
+        </div>
+        <div class="montage-circle-wrap">
+          <svg viewBox="0 0 160 160" width="160" height="160">
+            <defs>
+              <linearGradient id="pink-grad-${p.id}" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#EFAAC4"/>
+                <stop offset="100%" style="stop-color:#FFC4D1"/>
+              </linearGradient>
+            </defs>
+            <circle class="m-circle-bg" cx="80" cy="80" r="70"/>
+            <circle class="m-circle-fill" id="mcircle-${p.id}" cx="80" cy="80" r="70" stroke="url(#pink-grad-${p.id})" style="stroke-dashoffset:${dashOffset}"/>
+          </svg>
+          <div class="montage-inner">
+            <div class="montage-num" id="mnum-${p.id}">${p.montageCount}</div>
+            <div class="montage-sub">/ ${p.maillesTotal} mailles</div>
+            <div class="montage-pct-label" id="mpct2-${p.id}">${pct !== null ? pct + '%' : '0%'}</div>
+          </div>
+        </div>
+        <div class="montage-controls">
+          <button class="m-btn m-btn-minus" onclick="changeMontage(${p.id},-1)">−1</button>
+          <button class="m-btn m-btn-plus" onclick="changeMontage(${p.id},1)">+1</button>
+          <button class="m-btn m-btn-ten" onclick="changeMontage(${p.id},10)">+10</button>
+        </div>
+        <div class="montage-done ${p.montageCount >= p.maillesTotal ? 'show' : ''}" id="mdone-${p.id}">
+          <p>🎉 Montage terminé !</p>
+          <small>${p.maillesTotal} mailles montées</small>
+        </div>
+      </div>` : '';
 
     const el = document.createElement('div');
     el.className = 'project-card';
@@ -477,7 +516,7 @@ function renderProjects() {
         <div class="project-emoji">${p.emoji}</div>
         <div class="project-info">
           <div class="project-name-text">${p.name}</div>
-          <div class="project-meta">${metaText}</div>
+          <div class="project-meta" id="pmeta-${p.id}">${metaText}</div>
         </div>
         <div class="project-actions">
           <button class="btn-icon edit" onclick="event.stopPropagation();openEdit(${p.id})" title="modifier"><i class="fa-solid fa-pen"></i></button>
@@ -487,9 +526,9 @@ function renderProjects() {
       </div>
       <div class="project-expanded">
         <div class="project-expanded-inner">
-          ${progressHtml}
           ${patronHtml}
           ${notesHtml}
+          ${montageHtml}
           <div style="height:12px;"></div>
           <div class="rang-counter-card">
             <div class="rang-counter-top">
@@ -517,6 +556,36 @@ function renderProjects() {
   });
 }
 
+/* MONTAGE */
+function changeMontage(id, delta) {
+  const p = projects.find(p => p.id === id); if (!p) return;
+  p.montageCount = Math.max(0, Math.min(p.maillesTotal, (p.montageCount || 0) + delta));
+  const pct = Math.round(p.montageCount / p.maillesTotal * 100);
+  const dashOffset = 440 - Math.min(440, (p.montageCount / p.maillesTotal) * 440);
+
+  const numEl = document.getElementById('mnum-' + id);
+  if (numEl) {
+    numEl.textContent = p.montageCount;
+    numEl.classList.add('bump'); setTimeout(() => numEl.classList.remove('bump'), 200);
+  }
+  const circleEl = document.getElementById('mcircle-' + id);
+  if (circleEl) circleEl.style.strokeDashoffset = dashOffset;
+
+  const pctEl = document.getElementById('mpct-' + id);
+  const pct2El = document.getElementById('mpct2-' + id);
+  if (pctEl) pctEl.textContent = pct + '%';
+  if (pct2El) pct2El.textContent = pct + '%';
+
+  const doneEl = document.getElementById('mdone-' + id);
+  if (doneEl) doneEl.classList.toggle('show', p.montageCount >= p.maillesTotal);
+
+  const metaEl = document.getElementById('pmeta-' + id);
+  if (metaEl) metaEl.textContent = `${p.montageCount}/${p.maillesTotal} mailles montées · ${pct}%`;
+
+  save();
+}
+
+/* RANGS */
 function changeRangProjet(id, delta) {
   const p = projects.find(p => p.id === id); if (!p) return;
   p.rangCount = Math.max(0, (p.rangCount || 0) + delta);
@@ -527,10 +596,9 @@ function changeRangProjet(id, delta) {
     const lbl = el.nextElementSibling;
     if (lbl) lbl.textContent = p.rangCount === 1 ? 'rang' : 'rangs';
   }
-  const card = document.querySelector(`.project-card[data-id="${id}"]`);
-  if (card && p.maillesTotal === 0) {
-    const meta = card.querySelector('.project-meta');
-    if (meta) meta.textContent = `rang ${p.rangCount}`;
+  if (p.maillesTotal === 0) {
+    const metaEl = document.getElementById('pmeta-' + id);
+    if (metaEl) metaEl.textContent = `rang ${p.rangCount}`;
   }
   save();
 }
@@ -638,7 +706,13 @@ function highlightNext() {
   const steps = [...document.querySelectorAll('.step')]; steps.forEach(e => e.classList.remove('active-next','locked'));
   let f = false; steps.forEach(s => { if (!s.classList.contains('done') && !f) { s.classList.add('active-next'); f = true; } else if (!s.classList.contains('done')) s.classList.add('locked'); });
 }
-function shakeStep(el) { el.style.transition='transform 0.08s'; el.style.transform='translateX(6px)'; setTimeout(()=>el.style.transform='translateX(-5px)',80); setTimeout(()=>el.style.transform='translateX(4px)',160); setTimeout(()=>el.style.transform='translateX(0)',240); setTimeout(()=>el.style.transition='',300); }
+function shakeStep(el) {
+  el.style.transition='transform 0.08s'; el.style.transform='translateX(6px)';
+  setTimeout(()=>el.style.transform='translateX(-5px)',80);
+  setTimeout(()=>el.style.transform='translateX(4px)',160);
+  setTimeout(()=>el.style.transform='translateX(0)',240);
+  setTimeout(()=>el.style.transition='',300);
+}
 function resetRepartition() {
   document.getElementById('stitches').value = '';
   document.getElementById('increases').value = '';
@@ -652,9 +726,15 @@ function updateProgress() {
   document.getElementById('prog-total').textContent = totalSteps;
   document.getElementById('complete-msg').classList.toggle('hidden', doneSteps < totalSteps || totalSteps === 0);
 }
-function resetSteps() { document.querySelectorAll('.step').forEach(e => e.classList.remove('done','locked','active-next')); doneSteps = 0; highlightNext(); updateProgress(); save(); }
-function shakeInput() { document.querySelectorAll('#page-repartition input').forEach(i => { i.style.borderColor='rgba(239,170,196,0.6)'; setTimeout(()=>i.style.borderColor='',800); }); }
-
+function resetSteps() {
+  document.querySelectorAll('.step').forEach(e => e.classList.remove('done','locked','active-next'));
+  doneSteps = 0; highlightNext(); updateProgress(); save();
+}
+function shakeInput() {
+  document.querySelectorAll('#page-repartition input').forEach(i => {
+    i.style.borderColor='rgba(239,170,196,0.6)'; setTimeout(()=>i.style.borderColor='',800);
+  });
+}
 function getRepartitionState() {
   const checked = [...document.querySelectorAll('.step.done')].map(e => parseInt(e.dataset.i));
   return { stitches: document.getElementById('stitches').value, increases: document.getElementById('increases').value, type: selectedType, steps: lastSteps, checked };
